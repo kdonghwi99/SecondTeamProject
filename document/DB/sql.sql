@@ -249,3 +249,5 @@ ALTER TABLE "request" ADD CONSTRAINT "FK_admin_TO_request_1" FOREIGN KEY (
 REFERENCES "admin" (
    "adm_id"
 );
+
+alter table "admin" MODIFY "adm_type" CHARACTER default '0';
