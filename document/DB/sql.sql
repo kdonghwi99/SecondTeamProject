@@ -251,3 +251,5 @@ REFERENCES "admin" (
 );
 
 alter table "admin" MODIFY "adm_type" CHARACTER default '0';
+
+alter table "master" modify "mas_confirm" CHAR(1);
