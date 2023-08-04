@@ -269,6 +269,6 @@ REFERENCES admin (
 	adm_id
 );
 
-alter table "admin" MODIFY "adm_type" CHARACTER default '0';
+alter table admin MODIFY adm_type CHARACTER default '0';
 
-alter table "master" modify "mas_confirm" CHAR(1);
+alter table master modify mas_confirm CHAR(1);
