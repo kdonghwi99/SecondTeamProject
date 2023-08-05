@@ -1,0 +1,45 @@
+package talkdog.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
+
+import talkdog.vo.OrderVO;
+
+public class OrderDAO {
+	private Connection con;
+    public OrderDAO(Connection con) {   // setter/getter 말고 생성자로
+      this.con = con;
+   }
+   private String query; // 멤버 변수 지정
+   private PreparedStatement pstmt;
+   private ResultSet rs;
+	
+	
+    // 주문내역 등록 메서드
+    public boolean ordInsert(OrderVO orderVO) {
+        // 데이터베이스에 주문 내역 등록 로직 구현
+        // 성공 시 true 반환, 실패 시 false 반환
+        return false;
+    }
+
+    // 주문내역 전체조회 메서드
+    public List<OrderVO> ordSelectAll(double amount, int pageNum, int ordNo) {
+        return null;
+    }
+
+    // 주문내역 상세조회 메서드
+    public OrderVO ordSelect(int ordNo) {
+        // 데이터베이스에서 주문번호에 해당하는 주문 내역 상세조회 로직 구현
+        // ordNo: 조회할 주문번호
+        return null;
+    }
+
+    // 주문내역 수정 메서드
+    public boolean ordUpdate(OrderVO orderVO) {
+        // 데이터베이스에서 주문 내역 수정 로직 구현
+        // 성공 시 true 반환, 실패 시 false 반환
+        return false;
+    }
+}
