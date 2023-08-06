@@ -53,7 +53,7 @@ CREATE TABLE cart (
 CREATE TABLE qna (
 	qna_no	NUMBER		NOT NULL,
 	qna_date	DATE		NOT NULL,
-	qna_answer	VARCHAR2(10)		NOT NULL,
+	qna_answer	VARCHAR2(20)		NOT NULL,
 	qna_category	VARCHAR2(20)		NOT NULL,
 	qna_sec_category	VARCHAR2(20)		NULL,
 	qna_title	VARCHAR2(999)		NOT NULL,
