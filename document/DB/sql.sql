@@ -272,3 +272,5 @@ REFERENCES admin (
 alter table admin MODIFY adm_type CHARACTER default '0';
 
 alter table master modify mas_confirm CHAR(1);
+
+ALTER TABLE qna MODIFY qna_answer VARCHAR2(20);
