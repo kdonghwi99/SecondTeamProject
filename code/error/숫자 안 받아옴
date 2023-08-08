@@ -1,0 +1,38 @@
+public void noticeUpdate(HttpServletRequest request) {
+		NoticeVO nvo = new NoticeVO(); 						// 수정할 값들 view.jsp에서 갖고와서 bvo에 담고 update 메서드 호출
+		nvo.setNotCategory(request.getParameter("notCategory"));
+		nvo.setNotTitle(request.getParameter("notTitle"));
+		nvo.setNotCont(request.getParameter("notCont"));
+		nvo.setNotNo(Integer.parseInt(request.getParameter("notNo")));
+//		nvo.setNotImage(request.getParameter("notImage"));
+		
+		if(ndao.noticeUpdate(nvo)) {
+			session.setAttribute("msg", "글이 수정되었습니다.");
+		} else {
+			session.setAttribute("msg", "글 수정에 실패하였습니다.");
+		}
+		
+		String pageNum = request.getParameter("pageNum");
+		String type = request.getParameter("type");
+		String keyword = request.getParameter("keyword");
+		String category = request.getParameter("notCategory");
+		request.setAttribute("pageNum", pageNum);			// view.jsp에서 param.type으로 넘겼을 경우
+		request.setAttribute("type", type);					// 받고 넘길 필요 없이 그냥 url에 getParameter하면 됨
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("category", category);
+		try {
+            String encodedCategory = URLEncoder.encode(category, "UTF-8");
+            url = "./NoticeList.do?pageNum=" + request.getAttribute("pageNum") + "&type=" + request.getAttribute("type")
+            + "&keyword=" + request.getAttribute("keyword") + "&category=" + encodedCategory;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+	}
+
+수정할라했는데 자꾸 실패 떠... 왜그런가 봤더니 
+java.lang.NumberFormatException: Cannot parse null string
+	at java.base/java.lang.Integer.parseInt(Integer.java:630)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at talkdog.controller.CommController.noticeUpdate(CommController.java:180)
+이런 에러가 뜨대? CommController.java:180 여기로 가봤더니 notNo를 못 받아서 null이더라고.. jsp파일에서 내가 안 보내준거임 ㅠ
+<input type="hidden" name="notNo" value="${nvo.notNo }"> 이거 넣어줬더니 수정 완료~~
