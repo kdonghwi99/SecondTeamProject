@@ -1,0 +1,30 @@
+else if (cmd.equals("/Notice/NoticeModifyForm.do")) {	// cmd가 /NoticeModifyForm.do인 경우 공지사항 수정 폼 조회 메서드 호출
+			noticeViewAndUpdate(request);
+			response.sendRedirect(url); 
+			return;
+		} else if (cmd.equals("/Notice/NoticeModify.do")) {	// cmd가 /NoticeModify.do인 경우 공지사항 수정 메서드 호출
+			noticeUpdate(request); 						
+			response.sendRedirect(url); 					// forwarding 안 하고 redirect 시킴
+			return;
+		} 
+
+public void noticeViewAndUpdate(HttpServletRequest request) {
+		int notNo = Integer.parseInt(request.getParameter("notNo"));
+		request.setAttribute("nvo", ndao.noticeSelect(notNo));
+		
+		String category = request.getParameter("category");
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		String type = request.getParameter("type");
+		String keyword = request.getParameter("keyword");
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("type", type);
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("category", category);
+		
+		System.out.println("notNo : " + notNo);
+		System.out.println("nvo : " + request.getAttribute("nvo"));
+		url = "/talkdog/notice/noticeEdit.jsp";
+	}
+
+이것은 컨트롤러에 있는 메서드당,,, select하고 update를 하기 위해 select를 먼저 하려고 하는데 noticeEdit.jsp로 값이 안 넘어간다ㅜㅜ
+리다이렉트 할거면 세션에 담고 포워딩 할거면 그대로 담아도 된다 했다!
