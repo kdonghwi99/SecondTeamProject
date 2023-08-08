@@ -24,7 +24,7 @@ try {
             String encodedCategory = URLEncoder.encode(category, "UTF-8");
             url = "./NoticeList.do?pageNum=1&type=&keyword=&category=" + encodedCategory;
             
-            System.out.println(url);
+            System.out.println(url);		// ./NoticeList.do?pageNum=1&type=&keyword=&category=%EC%9D%B4%EB%B2%A4%ED%8A%B8
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
