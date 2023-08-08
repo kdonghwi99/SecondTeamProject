@@ -1,0 +1,31 @@
+public void noticeWrite(HttpServletRequest request) {
+		NoticeVO nvo = new NoticeVO();						// insert할 값들 nvo에 담아서 insert 메서드 호출
+		nvo.setNotTitle(request.getParameter("notTitle"));
+		nvo.setNotCont(request.getParameter("notCont"));
+		nvo.setNotImage(request.getParameter("notImage"));
+		nvo.setNotCategory(request.getParameter("notCategory"));
+		nvo.setNotHit(0);
+		
+		if(ndao.noticeInsert(nvo)) {
+			session.setAttribute("msg", "글이 등록되었습니다.");
+		} else {
+			session.setAttribute("msg", "글 등록에 실패하였습니다.");
+		}
+		String category = request.getParameter("notCategory");
+		
+		url = "./NoticeList.do?pageNum=1&type=&keyword=&category=" + category;	// 작성하면 type, keyword 안 받고 그냥 1페이지로
+	}
+
+// category의 글씨가 인코딩 불가한 오류 뜸
+// java.lang.IllegalArgumentException: code point [44,277]에 위치한 유니코드 문자 [공]은(는), 0에서 255까지의 허용 범위 바깥에 있으므로 인코딩될 수 없습니다.
+
+16번을 주석으로 막고
+try {
+            String encodedCategory = URLEncoder.encode(category, "UTF-8");
+            url = "./NoticeList.do?pageNum=1&type=&keyword=&category=" + encodedCategory;
+            
+            System.out.println(url);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+추가하니 됐다!
