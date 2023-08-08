@@ -1,0 +1,258 @@
+package talkdog.controller;
+
+import java.io.IOException;
+import java.sql.Connection;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import talkdog.dao.DeliveryDAO;
+import talkdog.dao.OrderDAO;
+import talkdog.dao.PaymentDAO;
+import talkdog.vo.DeliveryVO;
+import talkdog.vo.OrderVO;
+import talkdog.vo.PaymentVO;
+
+//@WebServlet({"*.do"})
+//@WebServlet("/talkdog/*")
+//folder 경로설정
+@WebServlet("/order/*")
+public class TalkdogController_Ord_Pay_Del extends HttpServlet {
+	
+   private static final long serialVersionUID = 1L;
+   private static final double AMOUNT_PER_PAGE = 10.0;   	//한 페이지의 게시물 수  (10개)
+   private static final double NUM_PER_PAGE = 5.0;      	//한 페이지에 표시할 페이지 번호 수 (하단 1 2 3 4 5 버튼)
+   private HttpSession session;		//로그인한 사람만 게시글을 쓰게 하려면 세션이 필요, 서블릿은 세션이 내장객체가 아니라서 필요함
+   private String url;
+   private DeliveryDAO ddao;		//이 시점에선 dao가 null
+   private OrderDAO odao;
+   private PaymentDAO pdao;
+
+   public void init(ServletConfig config) throws ServletException {
+	   ServletContext servletCtx = config.getServletContext();			// ServletContext 객체 생성
+		//DBCPInitListener(커넥션관련 리스너)에서 setAttribute한 걸 getAttribute
+		Connection con = (Connection)servletCtx.getAttribute("con");	// Object -> Connection 형변환
+		ddao = new DeliveryDAO(con);									// dao 객체 생성
+		odao = new OrderDAO(con);
+		pdao = new PaymentDAO(con);
+   }
+
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doPost(request, response);		//get,post 방식 모두 다 doPost()로 보내서 처리
+   }
+
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		String cmd = request.getRequestURI().substring(request.getContextPath().length());		//cmd에 /어쩌구.do만 담길 것임
+		session = request.getSession();							//jsp는 session이 내장 객체지만 java는 아니므로 요청객체 사용
+		
+		// <cmd에 따라 각 해당 메서드 호출>
+		switch(cmd) {
+	    // Delivery
+	    case "/Order/DeliveryInsert.do":
+	        delInsert(request);
+	        response.sendRedirect(url = "/order/orderEnroll.jsp");
+	        return;
+	    case "/Order/DeliveryView.do":
+	        delSelect(request);
+	        return;
+
+	    //Order
+	    case "/Order/OrderInsert.do":
+	        ordInsert(request);
+	        response.sendRedirect(url);
+	        return;
+	    case "/Order/OrderList.do":
+	        ordSelectAll(request);
+	        return;
+	    case "/Order/OrderView.do":
+	        ordSelect(request, response);
+	        response.sendRedirect(url);
+	        return;
+	    case "/Order/OrderEdit.do":
+	        ordUpdate(request);
+	        response.sendRedirect(url);
+	        return;
+
+	    //payment
+	    case "/Order/PayInsert.do":
+	        payInsert(request, response);
+	        response.sendRedirect(url);
+	        return;
+	    case "/Order/PayView.do":
+	        paySelect(request, response);
+	        response.sendRedirect(url);
+	        return;
+	    case "/Order/PayEdit.do":
+	        payUpdate(request);
+	        response.sendRedirect(url);
+	        return;
+	    default:
+	        System.out.println("cmd에 따른 메서드 호출 실패");
+	        break;
+	}
+		// 저장된 url로 forwarding
+		RequestDispatcher rdp = request.getRequestDispatcher(url);			//디스패처 검색
+		System.out.println(url);
+		System.out.println(rdp);
+		rdp.forward(request, response);
+	}
+   
+   // --------------------------------------Delivery---------------------------------------
+   
+	// 배송정보 등록 /DeliveryInsert.do 
+    private void delInsert(HttpServletRequest request)
+            throws ServletException, IOException {
+    	// 클라이언트로부터 받은 파라미터를 이용하여 DeliveryVO 객체 생성
+    	DeliveryVO dvo = new DeliveryVO();
+        // DeliveryVO에 클라이언트로부터 받은 파라미터 값 넣기
+    	dvo.setDelName(request.getParameter("delName"));
+    	dvo.setDelAddress1(request.getParameter("delAddress1"));
+    	dvo.setDelAddress2(request.getParameter("delAddress2"));
+    	dvo.setDelAddress3(request.getParameter("delAddress3"));
+    	dvo.setDelPhone(request.getParameter("delPhone"));
+    	dvo.setDelMemo(request.getParameter("delMemo"));
+    	
+    	// DeliveryDAO의 delInsert 메서드를 호출하여 배송정보 등록
+    	if (ddao.delInsert(dvo)) {
+        	session.setAttribute("msg", "배송정보 등록 완료");
+        } else {
+        	session.setAttribute("msg", "배송정보 등록 실패");
+        }
+    }
+
+    // 배송정보 조회 메서드
+    private void delSelect(HttpServletRequest request) {
+        // 클라이언트로부터 받은 파라미터를 이용하여 주문번호 가져오기
+
+        // DeliveryDAO의 delSelect 메서드를 호출하여 주문번호에 해당하는 배송정보를 조회합니다.
+        // DeliveryVO deliveryVO = ddao.delSelect(ordNo);
+        // 조회한 결과를 적절한 방식으로 응답합니다.
+    }
+
+    // --------------------------------------Order---------------------------------------
+
+    // 주문내역 등록 메서드
+    private void ordInsert(HttpServletRequest request) {
+       OrderVO ovo = new OrderVO();
+       //OrderVO에 클라이언트로부터 받은 파라미터 값
+       ovo.setOrdIng(url);
+       // OrderDAO의 ordInsert 메서드를 호출하여 주문내역을 등록
+    }
+
+    // 주문내역 전체조회
+    private void ordSelectAll(HttpServletRequest request) {
+        // 클라이언트로부터 받은 파라미터를 이용하여 페이지 번호와 주문번호를 가져옵니다.
+        // double amount = AMOUNT_PER_PAGE;
+        // int pageNum = 1;
+        // int ordNo = 0;
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+    	String ordNo = request.getParameter("ordNo");
+    	int cnt = odao.ordCount(ordNo);						//전체 주문내역 숫자
+		int pages = (int)(Math.ceil(cnt/AMOUNT_PER_PAGE)); //전체 페이지 번호 수 
+		
+		//각 페이지의 시작 번호 | ... | 끝 번호
+		int end 	= (int)(Math.ceil(pageNum/NUM_PER_PAGE) * NUM_PER_PAGE); 
+		int start 	= end - (int)(NUM_PER_PAGE - 1);
+		    end  	= end >= pages ? pages : end; 
+		    
+		//이전 | 이후 버튼 활성화 여부
+		boolean prev = start > 1;
+		boolean next = end < pages;
+		    
+		request.setAttribute("boardList", odao.ordSelectAll(AMOUNT_PER_PAGE, pageNum, ordNo));
+		request.setAttribute("cnt", cnt);
+		request.setAttribute("pageNum", pageNum); 
+		request.setAttribute("pages", pages); 
+		request.setAttribute("end", end); 
+		request.setAttribute("start", start); 
+		request.setAttribute("prev", prev); 
+		request.setAttribute("next", next); 
+		request.setAttribute("ordNo", ordNo); 
+		
+        // 조회한 결과를 적절한 방식으로 응답합니다.
+		url = "/order/orderListAll.jsp"; //끝나면 정해진 url로 보냄
+    }
+
+    // 주문내역 상세조회 메서드
+    private void ordSelect(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // 클라이언트로부터 받은 파라미터를 이용하여 주문번호를 가져옵니다.
+
+        // OrderDAO의 ordSelect 메서드를 호출하여 주문번호에 해당하는 주문내역을 조회합니다.
+        // OrderVO orderVO = odao.ordSelect(ordNo);
+        // 조회한 결과를 적절한 방식으로 응답합니다.
+    }
+
+    // 주문내역 수정 메서드
+    private void ordUpdate(HttpServletRequest request) {
+    		OrderVO ovo = new OrderVO();
+    		// OrderVO 파라미터값
+    		ovo.setOrdIng(request.getParameter("ordIng"));
+    		int invoiceNum = Integer.parseInt(request.getParameter("invoiceNum"));
+    		// OrderDAO의 ordUpdate 메서드를 호출하여 주문내역을 수정
+    	    if (odao.ordUpdate(ovo)) {
+    	        	session.setAttribute("msg", "수정 완료");
+    	        } else {
+    	        	session.setAttribute("msg", "수정 실패");
+    	        }
+    }
+
+    // --------------------------------------Payment---------------------------------------
+
+    // 결제내역 등록 메서드
+    private void payInsert(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    		//insert할 값들 payvo에 담아서 insert 메서드 호출
+
+    		//클라이언트로부터 받은 파라미터를 이용하여 PaymentVO 객체를 생성
+    		PaymentVO payvo = new PaymentVO();
+    		//PaymentVO에 클라이언트로부터 받은 파라미터 값을 채움 (VO와 동일)
+    		payvo.setPayNo(request.getParameter("payNo"));
+    		payvo.setPayTotal(0);								//int값 이게 맞는지 해결
+    		payvo.setPayAgree(request.getParameter("payAgree"));
+    		payvo.setPayDate(request.getParameter("payDate"));
+    		payvo.setPayCancleDate(request.getParameter("payCancelDate"));
+
+    		// PaymentDAO의 payInsert 메서드를 호출하여 결제내역을 등록
+    		if(pdao.payInsert(payvo)) {
+    			session.setAttribute("msg", "결제 내역 등록 성공");
+    		} else {
+    			session.setAttribute("msg", "결제 내역 등록 실패");
+    		}
+    		
+    		url = "./notice/NoticeList.do?pageNum=1&type=&keyword=&category=";
+        // pmdao.payInsert(paymentVO);
+        // 결과에 따라 적절한 응답을 처리합니다.
+    }
+
+    // 결제내역 조회 메서드
+    private void paySelect(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // 클라이언트로부터 받은 파라미터를 이용하여 주문번호를 가져옵니다.
+
+        // PaymentDAO의 paySelect 메서드를 호출하여 주문번호에 해당하는 결제내역을 조회합니다.
+        // PaymentVO paymentVO = pmdao.paySelect(ordNo);
+        // 조회한 결과를 적절한 방식으로 응답합니다.
+    }
+
+    //결제내역 수정 메서드 /payUpdate.do
+    private void payUpdate(HttpServletRequest request) {
+    	PaymentVO payvo = new PaymentVO();
+        // PaymentVO에 클라이언트로부터 받은 파라미터 값을 채움
+    	payvo.getPayCancleDate();
+        // PaymentDAO의 payUpdate 메서드를 호출하여 결제내역을 수정
+        if (pdao.payUpdate(payvo)) {
+        	session.setAttribute("msg", "성공 ");
+        } else {
+        	session.setAttribute("msg", "실패");
+        }
+    }
+}
