@@ -1,0 +1,16 @@
+DB에 한글이 깨져서 들어간다면 xml에 
+  <filter>	<!-- EncodingFilter의 필터 -->
+  	<filter-name>EncodingFilter</filter-name>
+  	<filter-class>talkdog.filter.EncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>charSet</param-name>	<!-- 파라미터 형태로 한글 처리 보내기 -->
+  		<param-value>UTF-8</param-value>
+  	</init-param>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>EncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>	<!-- 모든 페이지의 요청 -->
+  </filter-mapping>
+이거 넣었는지 확인해보기~~
+넣었는데도 안 되면 껐다 켜봐!
