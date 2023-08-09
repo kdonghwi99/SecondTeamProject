@@ -1,0 +1,13 @@
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li class="filter-active"><a href="">전체</a></li>
+              <li><a href="/talkdog/Comm/NoticeList.do?pageNum=1&type=&keyword=&category=사랑">사랑(연애/이별/결혼/이혼)</a></li>
+              <li><a href="">정신건강</a></li>
+              <li><a href="">취업/학업</a></li>
+              <li><a href="">인간관계</a></li>
+              <li><a href="">기타</a></li>
+            </ul>
+          </div>
+        </div>
+<!-- 커뮤니티, 공지사항 전체 목록에서 카테고리 선택하는 배너 -->        
