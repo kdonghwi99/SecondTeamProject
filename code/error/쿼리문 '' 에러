@@ -1,0 +1,35 @@
+query = " SELECT cc.*, a.adm_nick, cat.category FROM "
+					+ " (SELECT ROWNUM AS rnum, c.* FROM "
+					+ " (SELECT * FROM comm WHERE adm_id = '" + admId + "'";
+			if(!search.equals("") && !keyword.equals("")) {	
+				query += " AND " + search + " LIKE '%" + keyword + "%' ";
+			}
+			if(catNo != 0) {
+				query += " AND category_no = " + catNo;
+			}
+			query +=  " ORDER BY cm_no DESC) c "
+					+ " WHERE ROWNUM <= ? * ?) cc "
+					+ " JOIN admin a ON cc.adm_id = a.adm_id "
+					+ " JOIN category cat ON cc.category_no = cat.category_no "
+					+ " WHERE rnum > ? * ? ";	
+
+CommDAO를 돌리는데 쿼리문은 맞는거같은데 자꾸 adm_id를 못 찾는거야
+왜그런가 봤더니 admId 사이에 ' '가 들어가야되더라..... ㅜㅜ 이거때문에 30분 날림
+쿼리문 문제 같으면 쿼리 출력해보고 DB랑 비교해!!!
+
+java.sql.SQLSyntaxErrorException: ORA-00904: "TEST": invalid identifier
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:629)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:563)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1230)
+	.
+  .
+  .
+	at talkdog.dao.CommDAO.commCount(CommDAO.java:335)
+	.
+  .
+  .
+Caused by: Error : 904, Position : 41, Sql = SELECT COUNT(*) FROM comm WHERE adm_id = test, OriginalSql = SELECT COUNT(*) FROM comm WHERE adm_id = test, Error Msg = ORA-00904: "TEST": invalid identifier
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:636)
+	... 44 more
