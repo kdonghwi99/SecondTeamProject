@@ -1,0 +1,19 @@
+						<!-- ID가 "flexCheckAll" 인 체크박스를 클릭했을 때, 클래스가 "form-check-input" 인 모든 체크박스를 체크 -->
+						<!-- 다른 체크박스 중 하나라도 체크가 해제되면 "flexCheckAll" 체크박스도 체크하지 않도록 -->
+						<!-- 모든 하위 체크박스가 체크되어 있다면, flexCheckAll 체크박스도 check -->
+						<script>
+							$(function() {
+							    $("#flexCheckAll").click(function() {
+							        $(".form-check-input").prop("checked", this.checked);
+							    });
+							    $(".form-check-input").click(function() {
+							        if (!$(this).prop("checked")) {
+							            $("#flexCheckAll").prop("checked", false);
+							        } else {
+							            if ($(".form-check-input:checked").length == $(".form-check-input").length) {
+							                $("#flexCheckAll").prop("checked", true);
+							            }
+							        }
+							    });
+							});
+						</script>
