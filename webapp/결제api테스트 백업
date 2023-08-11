@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<!-- 포트원 라이브러리 추가 PortOne SDK -->
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+
+<!-- 객체 초기화 하기 -->
+<script type="text/javascript">
+var IMP = window.IMP;
+IMP.init("imp01863821"); //IMP.init('가맹점 식별코드')
+
+/* 결제 요청하기 */
+function requestPay() {
+    var today = new Date();   
+    var hours = today.getHours();				// 시
+    var minutes = today.getMinutes();			// 분
+    var seconds = today.getSeconds();			// 초
+    var milliseconds = today.getMilliseconds();
+    var makeMerchantUid = Date.now();
+
+	//rsp 파라미터로 보내기 위한 무언가    	
+    
+    var param = {
+        pg: 'html5_inicis',										//PG사 구분코드
+        pay_method: 'card',	//결제 수단 pay_method, 카드결제
+        merchant_uid: '5303',   		//주문 번호 생성한 ordNo
+        name: '결제테스트',						//상품명 pName
+        amount: 1000,							//결제 금액  payTotal
+        buyer_name: '구매자', 				//회원 이름  admName
+        buyer_tel: '01012345678',				//회원 번호 admPhone
+        buyer_email: 'ha020@naver.com',		//회원 이메일 admEmail
+        buyer_addr: '서울특별시 강남구 삼성동', //회원 주소 admAdd1,2,3
+        buyer_postcode: '123-456',				//회원 우편번호 admMail
+    };
+    <%-- 결제 응답처리 
+    rsp는 IMP.request_pay() 메소드를 호출하여 결제 요청 후, 결제 요청 결과를 응답받은 객체--%>
+    <%-- 결제 결과 처리하기, iframe 결제창 결과처리 --%>
+    <%-- callback --%>
+    IMP.request_pay(param, function(rsp) {
+        if ( rsp.success ) { <%-- 결제 성공시 로직 --%>
+            var msg = '결제가 완료되었습니다.';
+            msg += '결제번호 : ' + rsp.imp_uid + '\n';				<%--imp_uid 고유 결제 번호--%>
+            msg += '주문번호 : ' + rsp.merchant_uid + '\n';		<%--merchant_uid 주문 번호--%>
+            msg += '결제 금액 : ' + rsp.paid_amount + '원'+ '\n'; 	<%--paid_amount 결제 금액 --%>
+            msg += '카드 승인번호 : ' + rsp.apply_num + '\n';	<%--apply_num 카드승인번호--%>
+            msg += '결제 승인날짜 : ' + rsp.paid_at + '\n';			<%--paid_at 결제승인시각(String) --%>
+            alert(msg);
+			
+			<%-- 결제 완료 후 이동할 페이지 url--%>
+            location.href="/talkdog/order/orderDone.jsp?rsp.imp_uid="+rsp.imp_uid+"&rsp.paid_at="+rsp.paid_at;
+            <%--pay_info(rsp);--%>
+            
+        } else {	
+        	<%-- 결제 실패 시 로직 --%>
+            var msg = '결제에 실패하였습니다.';
+            msg += '에러내용 : ' + rsp.error_msg;		<%-- error_msg 결제 실패 메시지 --%>
+            
+            history.back();
+            
+            <%--location.href="goods_pay_fail.do?error_msg="+rsp.error_msg;--%>
+        }
+    });
+}
+</script>
+
+<meta charset="UTF-8" />
+<title>Sample Payment</title>
+</head>
+<body>
+
+<button onclick="requestPay()">결제하기</button>
+
+</body>
+</html>
