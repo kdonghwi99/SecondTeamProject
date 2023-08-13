@@ -125,7 +125,6 @@
 						</ul></li>
        					 
        					 <li><a href="/talkdog/Qna.do?pageNum=1&type=&keyword=">문의게시판</a></li>
-         				 <li><a class="nav-link" href="/market/BoardList.do?pageNum=1&type=&keyword=">게시판</a></li>					
          				 <li><a href="#">골라보시개🐶</a></li>
 						</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
