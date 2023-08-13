@@ -58,7 +58,7 @@
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        <h1><a href="index.html">다들어보시개</a></h1>
+        <h1><a href="/talkdog/index.jsp">다들어보시개</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -67,21 +67,21 @@
         <ul>
           <li><a href="#">자가진단</a></li>
           <li class="dropdown"><a href="#"><span>공지사항/이벤트</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">공지사항</a></li>
-              <li><a href="#">이벤트</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>커뮤니티</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">전체</a></li>
-              <li><a href="#">사랑(연애/이별/결혼/이혼)</a></li>
-              <li><a href="#">정신건강</a></li>
-              <li><a href="#">취업/학업</a></li>
-              <li><a href="#">인간관계</a></li>
-              <li><a href="#">기타</a></li>
-            </ul>
-          </li>
+					<ul>
+						<li><a href="/talkdog/Notice/NoticeList.do?pageNum=1&type=&keyword=&category=공지사항">공지사항</a></li>
+              			<li><a href="/talkdog/Notice/NoticeList.do?pageNum=1&type=&keyword=&category=이벤트">이벤트</a></li>
+					</ul></li>
+		   <li class="dropdown"><a href="#"><span>커뮤니티</span> <i class="bi bi-chevron-down"></i></a>
+					<ul>
+					    <li><a href="/talkdog/Comm/CommListAll.do?pageNum=1&type=&keyword=&catNo=0">전체</a></li>
+              			<li><a href="/talkdog/Comm/CommListAll.do?pageNum=1&type=&keyword=&catNo=1">사랑(연애/이별/결혼/이혼)</a></li>
+              			<li><a href="/talkdog/Comm/CommListAll.do?pageNum=1&type=&keyword=&catNo=2">정신건강</a></li>
+              			<li><a href="/talkdog/Comm/CommListAll.do?pageNum=1&type=&keyword=&catNo=3">취업/학업</a></li>
+              			<li><a href="/talkdog/Comm/CommListAll.do?pageNum=1&type=&keyword=&catNo=4">인간관계</a></li>
+              			<li><a href="/talkdog/Comm/CommListAll.do?pageNum=1&type=&keyword=&catNo=5">기타</a></li>
+              			<li><a href="/talkdog/Comm/CommList.do?pageNum=1&type=&keyword=&catNo=0&sid=${sessionScope.sid }">내글보기</a></li>
+              			<li><a href="/talkdog/Comm/CmreList.do?pageNum=1&type=&keyword=&catNo=0&sid=${sessionScope.sid }">내댓글보기</a></li>
+					</ul></li>
           <li><a href="/talkdog/Qna.do?pageNum=1&type=&keyword=">문의게시판</a></li>
           <a class="nav-link" href="/market/BoardList.do?pageNum=1&type=&keyword=">게시판</a></li>
           <li><a href="#">골라보시개🐶</a></li>
