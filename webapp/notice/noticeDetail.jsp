@@ -9,7 +9,7 @@
 	#row {display: flex; justify-content: center;}
 	button[type=button] { background: #6799FF; border: 0; border-radius: 50px; padding: 10px 24px; color: #fff; transition: 0.4s; }
 	button[type=button]:hover { background: #4374D9;}
-	.btnlist { background: #86E57F; border: 0; border-radius: 50px; padding: 13px 24px; color: #fff; transition: 0.4s; }
+	.btnlist { background: #86E57F; border: 0; border-radius: 50px; padding: 15px 24px; color: #fff; transition: 0.4s; }
 	.btnlist:hover { background: #1DDB16; color: #fff;}
 	.form-group label {
         font-weight: bold;
@@ -76,9 +76,11 @@
               <label>내용</label>
 				${nvo.notCont}
               </div>
+              <c:if test="${nvo.notImage != '../resources/images/null' }">
               <div class="text-center">
-              <img src="${nvo.notImage}" alt="이미지">
+              <img src="${nvo.notImage}" alt="이미지" width="500" height="700">
               </div>
+              </c:if>
             	
               <div class="my-3"></div>
              <c:if test="${sid != null && sid == 'admin'}">
