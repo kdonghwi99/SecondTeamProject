@@ -7,13 +7,13 @@
 <title>공지사항/이벤트</title>
 </head>
 <style>
-.btnEnroll { background: #86E57F; border: 0; border-radius: 50px; padding: 13px 24px; color: #fff; transition: 0.4s; }
+.btnEnroll { background: #86E57F; border: 0; border-radius: 50px; padding: 15px 24px; color: #fff; transition: 0.4s; }
 .btnEnroll:hover { background: #1DDB16; color: #fff;}
 .btnsearch {
 	background: #FFB2D9;
 	border: 0;
 	border-radius: 50px;
-	padding: 10px 20px;
+	padding: 7px 15px;
 	color: #fff;
 	transition: 0.4s;
 }
@@ -127,7 +127,7 @@
 				<tr>
 					<td class="text-center">${nvo.notRn }</td>
 					<td class="text-center">${nvo.notCategory }</td>
-					<td class="text-center"><a href="./NoticeView.do?notNo=${nvo.notNo }&id=${nvo.admId }&pageNum=${pageNum }&type=${type }&keyword=${keyword }&category=${category }" >${nvo.notTitle }</a></td>
+					<td class="text-center"><a href="./NoticeView.do?notNo=${nvo.notNo }&id=admin&pageNum=${pageNum }&type=${type }&keyword=${keyword }&category=${category }" >${nvo.notTitle }</a></td>
 					<td class="text-center">관리자</td>
 					<td class="text-center"><fmt:formatDate value="${nvo.notDate }" type="date" dateStyle="long"/></td>
 					<td class="text-center">${nvo.notHit }</td>
@@ -160,9 +160,11 @@
 			</div>
 		</c:if><!-- END 게시물이 있는 경우 -->
 		
+		<c:if test="${sessionScope.sid != null && sessionScope.sid == 'admin'}">
 		<div class="text-right">
 			<a href="./NoticeWriteForm.do" class="btnEnroll">등록하기</a><br><br><br>
 		</div>
+		</c:if>
 		<input type="hidden" name="pageNum" value="${pageNum }"/>	<%-- pageNum을 안 보내면 페이징 선택 시 에러뜸 --%>
 		<input type="hidden" name="category" value="${category }"/>
 	</form>
