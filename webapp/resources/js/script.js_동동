@@ -1,0 +1,57 @@
+/**
+ * /resources/js/script.js
+ */
+
+ function delChk() {
+	 // 공지사항 삭제 시 확인 메서드
+	 if(confirm('해당 글을 삭제하시겠습니까?')) {
+		$('form').attr('action', './NoticeRemove.do').submit();
+		// form의 action 경로를 ./NoticeRemove.do로 바꾸고 submit하기 
+ 	}
+ }
+ 
+function updChk() {
+	// 게시물 수정 시 확인 메서드
+    if (confirm("해당 글을 수정하시겠습니까?")) {
+        document.querySelector("form").submit();
+        // 확인 누르면 form의 경로로 submit하기
+    }
+}
+
+function insChk() {
+	// 게시물 등록 시 확인 메서드
+    if (confirm("글을 등록하시겠습니까?")) {
+        document.querySelector("form").submit();
+        // 확인 누르면 form의 경로로 submit하기
+    }
+}
+
+ function commDelChk() {
+	 // 커뮤니티 글 삭제 시 확인 메서드
+	 if(confirm('해당 글을 삭제하시겠습니까?')) {
+		$('form').attr('action', './CommRemove.do').submit();
+		// form의 action 경로를 ./CommRemove.do로 바꾸고 submit하기 
+ 	}
+ }
+ 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const heartButton = document.getElementById('heartButton');
+  const likesCount = document.getElementById('likesCount');
+
+  heartButton.addEventListener('click', () => {
+    heartButton.classList.add('clicked'); // 클래스 추가
+    likesCount.textContent = parseInt(likesCount.textContent) + 1;	// 공감 수 증가
+    setTimeout(() => {
+      heartButton.classList.remove('clicked'); // 클래스 제거 (애니메이션 종료 후)
+    }, 500); // 0.5초 지연 후 제거 (애니메이션 시간과 동일한 값으로 설정)
+  });
+});
+
+ function cmreDelChk() {
+	 // 커뮤니티 댓글 삭제 시 확인 메서드
+	 if(confirm('댓글을 삭제하시겠습니까?')) {
+//		$('form').attr('action', './CmreRemove.do').submit();
+		// form의 action 경로를 ./CmreRemove.do로 바꾸고 submit하기 
+ 	}
+ }
