@@ -6,6 +6,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+  .large-image {
+  		margin-bottom : 0px;
+  		margin-top: 15px;
+        width: 120px;
+        height: 120px; 
+    }
+</style>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -57,11 +65,15 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex justify-content-between align-items-center">
 
-      <div class="logo">
-        <h1><a href="/talkdog/index.jsp">다들어보시개</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
+<div>
+	<h1>
+		<!-- 다들어줄개 로고 -->
+		<!-- index, 문의게시판 등 모든 곳에서 보여주기 위해 웹서버 주소 사용  -->
+		<a href="/talkdog"><img src="https://github.com/kdonghwi99/SecondTeamProject/blob/main/webapp/resources/talkdog.png?raw=true" alt="" class="img-fluid large-image"></a>
+	</h1>
+	<!-- Uncomment below if you prefer to use an image logo -->
+	<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+</div>
 
       <nav id="navbar" class="navbar">
         <ul>
