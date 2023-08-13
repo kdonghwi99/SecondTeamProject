@@ -7,6 +7,7 @@
 <html>
 <head>
 <style type="text/css">
+/* 다들어줄개 로고 크기 수정 */
   .large-image {
   		margin-bottom : 0px;
   		margin-top: 15px;
