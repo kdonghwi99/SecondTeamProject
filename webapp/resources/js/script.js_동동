@@ -29,7 +29,7 @@ function insChk() {
  function commDelChk() {
 	 // 커뮤니티 글 삭제 시 확인 메서드
 	 if(confirm('해당 글을 삭제하시겠습니까?')) {
-		$('form').attr('action', './CommRemove.do').submit();
+		// $('form').attr('action', './CommRemove.do').submit();
 		// form의 action 경로를 ./CommRemove.do로 바꾸고 submit하기 
  	}
  }
@@ -55,3 +55,4 @@ document.addEventListener('DOMContentLoaded', () => {
 		// form의 action 경로를 ./CmreRemove.do로 바꾸고 submit하기 
  	}
  }
+ 
