@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>talkdog</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+  <security-role>
+		<role-name>admin</role-name>
+	</security-role>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>talkdog</web-resource-name>
+			<url-pattern>/장바구니/장바구니.jsp</url-pattern>
+			<url-pattern>/mypage/detailInfoAll.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+		<form-login-page>/common/login.jsp</form-login-page>
+		<form-error-page>/common/loginFailed.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+  
+  <jsp-config>
+		<jsp-property-group>
+			<url-pattern>/webapp/index.jsp</url-pattern>
+			<include-prelude>/include/header.jsp</include-prelude>
+			<include-coda>/include/footer.jsp</include-coda>
+		</jsp-property-group>
+	</jsp-config>
+  
+  <!-- 한글 깨짐 방지를 위한 필터 설정 -->
+  <filter>
+    <filter-name>SetCharEncoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+      <init-param>
+        <param-name>encoding</param-name>
+        <param-value>utf-8</param-value>
+      </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SetCharEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>  
+  
+</web-app>
