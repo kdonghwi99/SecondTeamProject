@@ -77,7 +77,7 @@
 				<a href="#">이용자관리</a><span></span>
 			</c:when>
 			<c:otherwise> <!-- 일반회원만 접속 -->
-				<a href="/talkdog/Cart/list.do?sid=${sid }">장바구니 &nbsp&nbsp</a><span></span>
+				<a href="/talkdog/Cart/CartList.do?sid=${sid }">장바구니 &nbsp&nbsp</a><span></span>
 				<a href="#">마이페이지 &nbsp</a>
 			</c:otherwise>
 		</c:choose>
@@ -124,7 +124,7 @@
               			<li><a href="/talkdog/Comm/CmreList.do?pageNum=1&type=&keyword=&catNo=0&sid=${sessionScope.sid }">내댓글보기</a></li>
 						</ul></li>
        					 
-       					 <li><a href="/talkdog/Qna.do?pageNum=1&type=&keyword=">문의게시판</a></li>
+       					 <li><a href="/talkdog/Qna/list.do?pageNum=1&category=">문의게시판</a></li>
          				 <li><a href="#">골라보시개🐶</a></li>
 						</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
