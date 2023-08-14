@@ -24,18 +24,18 @@ CREATE TABLE memberResult (
 
 CREATE TABLE cart (
 	cart_no	NUMBER		NOT NULL,
-	p_id	VARCHAR2(20)		NOT NULL,
+	p_id	VARCHAR2(50)		NOT NULL,
 	adm_id	VARCHAR2(50)		NOT NULL,
 	cart_quan	NUMBER		NOT NULL,
-	cart_opt	VARCHAR2(20)		NULL
+	cart_opt	VARCHAR2(50)		NULL
 );
 
 CREATE TABLE qna (
 	qna_no	NUMBER		NOT NULL,
 	qna_date	DATE		NOT NULL,
-	qna_answer	VARCHAR2(20)		NOT NULL,
-	qna_category	VARCHAR2(20)		NOT NULL,
-	qna_sec_category	VARCHAR2(20)		NULL,
+	qna_answer	VARCHAR2(50)		NOT NULL,
+	qna_category	VARCHAR2(50)		NOT NULL,
+	qna_sec_category	VARCHAR2(50)		NULL,
 	qna_title	VARCHAR2(999)		NOT NULL,
 	qna_content	VARCHAR2(999)		NOT NULL,
 	qna_reply	VARCHAR2(999)		NULL,
