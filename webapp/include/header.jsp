@@ -61,17 +61,29 @@
 <c:if test="${sessionScope.sid != null }">
 	<div class="contact-info d-flex align-items-center">
 		<a href="/talkdog">HOME &nbsp&nbsp</a><span></span> <!-- 모두 -->
-		<c:choose>
-			<c:when test="${sessionScope.sid == 'admin'}"> <!-- admin일 때 보이는 것, 대신 장바구니, 마이페이지 X -->
-				<a href="#">상품관리 &nbsp</a><span></span>
-				<a href="#">이용자관리</a><span></span>
-			</c:when>
-			<c:otherwise> <!-- 일반회원만 접속 -->
-				<a href="/talkdog/Cart/CartList.do?sid=${sid }">장바구니 &nbsp&nbsp</a><span></span>
-				<a href="/talkdog/Cart/CartList.do">장바구니 &nbsp&nbsp</a><span></span>
-				<a href="#">마이페이지 &nbsp</a>
-			</c:otherwise>
-		</c:choose>
+		<c:if test="${sessionScope.sid == null }">
+					<a href="/talkdog/common/login.jsp">장바구니&nbsp;</a>
+					<span> </span>
+					<a href="/talkdog/common/login.jsp">마이페이지&nbsp;</a>
+				</c:if>
+				<c:if test="${sessionScope.sid != null }">
+					<a href="/talkdog/Cart/CartList.do">장바구니&nbsp;</a>
+					<span> </span>
+					<c:if test="${sessionScope.sid != 'admin'}">
+						<a href="/talkdog/mypage/memMypage.jsp">마이페이지&nbsp;</a>
+					</c:if>
+					<c:if test="${sessionScope.sid == 'admin'}">
+						<a href="/talkdog/mypage/admAllList.jsp">마이페이지&nbsp;</a>
+					</c:if>
+				</c:if>
+				<c:if test="${sessionScope.sid == 'admin'}">
+					<a href="/talkdog/Cart/list.do?sid=${sid }"></a>
+					<span> </span>
+					<a href="#">상품관리&nbsp;</a>
+					<span> </span>
+					<a href="#">이용자관리&nbsp;</a>
+
+				</c:if>
 	</div>
 	<div class="social-links d-none d-md-flex align-items-center">
 		<a  style="color: white">[${sessionScope.sid}님]</a>
