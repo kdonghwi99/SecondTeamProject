@@ -1,1 +1,133 @@
+package talkdog.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import talkdog.vo.OrderVO;
+
+public class OrderDAO {
+
+   private String query; // 멤버 변수 지정
+   private PreparedStatement pstmt;
+   private ResultSet rs;
+   
+   private Connection con;
+    public OrderDAO(Connection con) {   // setter/getter 말고 생성자로
+      this.con = con;
+   }	
+	
+    // 주문내역 등록 메서드
+    public boolean ordInsert(OrderVO ovo) {
+		try {
+			query = " INSERT INTO order_ " +
+					" VALUES(?,SYSDATE,?,?,?,NVL(?, '배송 준비중') ) ";			//insert 쿼리문
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, ovo.getOrdNo());
+			pstmt.setString(2, ovo.getOrdIng());
+			pstmt.setInt(3, ovo.getCartNo());
+			pstmt.setString(5, ovo.getAdmId());
+			pstmt.setInt(6, ovo.getInvoiceNo());			//송장번호 추후등록
+			
+			int result = pstmt.executeUpdate();
+			if (result == 1) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+    	return false;
+    }
+
+    // 주문내역 전체조회
+    public List<OrderVO> ordSelectAll(String ordNo) {
+    	List<OrderVO> ovoList = new ArrayList<>();
+		OrderVO ovo = null;	
+		try {
+			query = " SELECT ord_no, ord_date, ord_ing, invoice_no FROM order_ ORDER BY ord_date desc";
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			while (rs.next() == true) {				 
+				ovo = new OrderVO();
+				ovo.setOrdNo(rs.getString("ord_no"));
+				ovo.setOrdDate(rs.getDate("ord_date"));
+				ovo.setOrdIng(rs.getString("ord_ing"));
+				ovo.setInvoiceNo(rs.getInt("invoice_no"));
+				ovoList.add(ovo);  //List 객체에 추가
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return ovoList;
+    }
+    
+    //주문내역 개수
+	public int ordCount(String ordNo) {
+		int cnt = 0;
+		try {
+			query = " SELECT COUNT(*) FROM order_ ";
+			
+			if(!ordNo.equals("")) {
+			    query += " WHERE ordNo = ?";
+			    pstmt.setString(1, ordNo);
+			}
+			
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if (rs.next() == true) {				 
+				cnt = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+    
+    // 주문내역 상세조회
+    public OrderVO ordSelect(String ordNo) {	// ordNo: 조회할 주문번호
+    	OrderVO ovo = null;
+       	try {
+    			query = " SELECT * FROM ORDER_ WHERE ord_no=? ";
+    			pstmt = con.prepareStatement(query);
+    			pstmt.setString(1, ordNo);
+
+        		rs = pstmt.executeQuery(); // rs.next 시 다음 값이 있다면 true, 없다면 null 반환
+        		while (rs.next()==true) { // 조회된 레코드들이 있다면
+        			ovo = new OrderVO(); // MemoVO객체를 생성, 아니면 생성X
+                    ovo.setAdmId(rs.getString("admId"));
+                    ovo.setCartNo(rs.getInt("cartNo"));
+                    ovo.setOrdDate(rs.getDate("ordDate"));
+                    ovo.setOrdIng(rs.getString("ordIng"));
+                    ovo.setInvoiceNo(rs.getInt("invoiceNo"));
+        		}
+        	} catch (SQLException e) {
+        		e.printStackTrace();
+        	} 
+        	return ovo;
+    }
+
+    // 주문내역 수정 메서드
+    public boolean ordUpdate(OrderVO ovo) {
+    	try {
+             query = " UPDATE order_ " +
+                     "SET ord_ing = ?, invoice_no = ? " +
+                     "WHERE ord_no = ?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, ovo.getOrdIng());
+            pstmt.setInt(2, ovo.getInvoiceNo());
+            int result = pstmt.executeUpdate();
+            if (result == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+}
