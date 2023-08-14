@@ -355,14 +355,12 @@ CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
 	INSERT INTO qna VALUES (QNA_SEQ.NEXTVAL, SYSDATE, '답변대기', '주문관련', '취소','주문한 거 취소하고 싶어요.', '어쩌구저쩌구 샬라샬라 샀는데 이거 취소처리 해주세요.', NULL, NULL, 'test1');
 
 	--product
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1717','djks',234,'dasfsafas',15,'medi',null,'p1717.jpg','i1717.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1414','juyo',45,'ggggg',12,'book',null,'p1414.jpg','i1414.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1515','hihihi',673,'product test test hahahahah',200000,'book',null,'p1515.jpg','i1515.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1333','하이',2,'fdfd',2000,'AROMA',to_date('23/08/08','RR/MM/DD'),'p13331.png','i13331.png','null');
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1818','sf',645,'sdfasfsa',16,'medi',null,'p1818.jpg','i1818.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1919','efd',234,'sfasfas',17,'book',null,'p1919.jpg','i1919.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p2929','dsf',12,'sfasfasd',187,'aroma',null,'p2929.jpg','i2929.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p123','product',5,'product인데 어쩔티비입니다',3000,'AROMA',to_date('23/08/10','RR/MM/DD'),'p1231.jpg','i1231.jpg','number');
+    Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1717','djks',234,'dasfsafas',15,'medi',to_date('23/08/08','RR/MM/DD'),'p1717.jpg','i1717.jpg',null);
+	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1414','juyo',45,'ggggg',12,'book',to_date('23/08/08','RR/MM/DD'),'p1414.jpg','i1414.jpg',null);
+	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1515','hihihi',673,'product test test hahahahah',200000,'book',to_date('23/08/08','RR/MM/DD'),'p1515.jpg','i1515.jpg',null);
+	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1818','sf',645,'sdfasfsa',16,'medi',to_date('23/08/08','RR/MM/DD'),'p1818.jpg','i1818.jpg',null);
+	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1919','efd',234,'sfasfas',17,'book',to_date('23/08/08','RR/MM/DD'),'p1919.jpg','i1919.jpg',null);
+	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p2929','dsf',12,'sfasfasd',187,'aroma',to_date('23/08/08','RR/MM/DD'),'p2929.jpg','i2929.jpg',null);
 	
 
 	-- order_
