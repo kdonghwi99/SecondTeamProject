@@ -63,7 +63,7 @@ tbody a:hover { color : black; }
 				<option ${type eq '커뮤니티' ? 'selected' : ' '}>커뮤니티</option>
 				<option ${type eq '기타' ? 'selected' : ' '}>기타</option>
 			</select> 
-			<input type="submit" class="btn btn-outline-danger btn-sm" value="모아보기">
+			<input type="submit" class="btn btn-outline-success btn-sm" value="모아보기">
 			<br>
 	</div>
 	<div class="text-right"> 
