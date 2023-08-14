@@ -99,7 +99,7 @@
 		<h1>
 			<!-- 다들어줄개 로고 -->
 			<!-- index, 문의게시판 등 모든 곳에서 보여주기 위해 웹서버 주소 사용  -->
-			<a href="/talkdog"><img src="https://github.com/kdonghwi99/SecondTeamProject/blob/main/webapp/resources/talkdog.png?raw=true" alt="" class="img-fluid large-image"></a>
+			<a href="/talkdog"><img src="https://github.com/kdonghwi99/SecondTeamProject/blob/main/webapp/resources/images/talkdog.png?raw=true" alt="" class="img-fluid large-image"></a>
 		</h1>
 		<!-- Uncomment below if you prefer to use an image logo -->
 		<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
