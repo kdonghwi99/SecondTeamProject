@@ -49,7 +49,7 @@ create table master (
 	mas_sveri varchar2(100) not null,
 	mas_intro varchar2(1000),
 	mas_addr varchar2(500),
-	mas_auth varchar2(100) not null,
+	mas_auth varchar2(100),
 	mas_prof varchar2(100),
 	mas_regi date not null,
 	mas_confirm char(1) not null,
