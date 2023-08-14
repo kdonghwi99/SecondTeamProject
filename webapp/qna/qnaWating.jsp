@@ -55,7 +55,7 @@ tbody a:hover { color : black; }
 				<option ${type eq '기타' ? 'selected' : ' '}>기타</option>
 			</select> 
 			<input type="hidden" name="pageNum" value="1"/>
-			<input type="submit" class="btn btn-outline-danger btn-sm" value="모아보기">
+			<input type="submit" class="btn btn-outline-success btn-sm" value="모아보기">
 			<br>
 	</div>
 	<div class="text-right"> 
