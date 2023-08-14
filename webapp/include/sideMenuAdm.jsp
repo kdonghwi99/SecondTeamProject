@@ -25,7 +25,7 @@
 			<a href="/talkdog/Mypage/masReqConfirm.do">전문가 인증 관리</a>
 		</div>
 		<div>
-			<a href="#">주문관리</a>
+			<a href="/talkdog/Order/OrderList.do">주문관리</a>
 		</div>
 		<div>
 			<a href="#">답변 대기 문의글</a>
