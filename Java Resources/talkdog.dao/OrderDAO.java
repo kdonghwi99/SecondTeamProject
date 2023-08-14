@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import talkdog.vo.OrderVO;
+import talkdog.vo.CartVO;
 
 public class OrderDAO {
 
@@ -130,4 +131,30 @@ public class OrderDAO {
         }
         return false;
     }
+    
+  //pId로 productVO  가져옴
+	   public CartVO getCvo(int cartNo) {
+		   //장바구니 전체조회 시 -> pid로 상품명, 상품가격을 담은 vo반환메서드
+		   
+		   CartVO cvo = null;
+		   
+		   try {
+				query = "SELECT * FROM cart WHERE cart_no=?";
+				
+				pstmt = con.prepareStatement(query); 	//prepareStatement는 쿼리를 미리 준비해뒀으니까 매개변수로 query받음
+				pstmt.setInt(1, cartNo);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {		
+					cvo = new CartVO();		// rs가 있을 때에만 qvo 생성
+					cvo.setCartQuan(rs.getInt("cartQuan")); //수량
+					cvo.setCartOpt(rs.getString("cartOpt"));//옵션 
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return cvo;
+	   }
+    
 }
