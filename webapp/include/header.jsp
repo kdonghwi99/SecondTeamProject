@@ -77,7 +77,7 @@
 				<a href="#">이용자관리</a><span></span>
 			</c:when>
 			<c:otherwise> <!-- 일반회원만 접속 -->
-				<a href="/talkdog/Cart/CartList.do?sid=${sid }">장바구니 &nbsp&nbsp</a><span></span>
+				<a href="/talkdog/Cart/CartList.do">장바구니 &nbsp&nbsp</a><span></span>
 				<a href="#">마이페이지 &nbsp</a>
 			</c:otherwise>
 		</c:choose>
