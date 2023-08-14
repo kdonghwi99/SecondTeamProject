@@ -50,7 +50,7 @@
 		
 		<div class="row">
 			<div class="col" align="center"> 
-				<img src="/talkdog/resources/cart.png" style="display: block; margin: 0 auto;" id="cartImg" alt="카트 이미지"/>
+				<img src="/talkdog/resources/images/cart.png" style="display: block; margin: 0 auto;" id="cartImg" alt="카트 이미지"/>
 				<h3>장바구니에 담긴 상품이 없습니다.</h3>
 			</div>
 		</div><br><br>
