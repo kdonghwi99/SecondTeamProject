@@ -51,8 +51,13 @@
 		<span></span>
 		</div>
 		<div class="social-links d-none d-md-flex align-items-center">
-			<a href="/talkdog/common/login.jsp">로그인</a>
-			<a href="/talkdog/common/join.jsp">회원가입</a>
+			<a href="/talkdog/common/login.jsp">장바구니&nbsp;</a>
+			<span> </span>
+			<a href="/talkdog/common/login.jsp">마이페이지&nbsp;</a>
+
+
+			<a href="/talkdog/common/login.jsp" class="login">로그인</a>
+			<a href="/talkdog/common/join.jsp" class="regi">회원가입</a>
 		</div>
 	</c:if>
 				
@@ -61,11 +66,6 @@
 <c:if test="${sessionScope.sid != null }">
 	<div class="contact-info d-flex align-items-center">
 		<a href="/talkdog">HOME &nbsp&nbsp</a><span></span> <!-- 모두 -->
-		<c:if test="${sessionScope.sid == null }">
-					<a href="/talkdog/common/login.jsp">장바구니&nbsp;</a>
-					<span> </span>
-					<a href="/talkdog/common/login.jsp">마이페이지&nbsp;</a>
-				</c:if>
 				<c:if test="${sessionScope.sid != null }">
 					<a href="/talkdog/Cart/CartList.do">장바구니&nbsp;</a>
 					<span> </span>
@@ -86,7 +86,7 @@
 				</c:if>
 	</div>
 	<div class="social-links d-none d-md-flex align-items-center">
-		<a  style="color: white">[${sessionScope.sid}님]</a>
+		<a  style="color: white">[${sessionScope.sid}]님 환영합니다!</a>
 		<a  style="color: white;" href="/talkdog/common/logout.jsp">로그아웃</a>
 	</div>
 </c:if>
