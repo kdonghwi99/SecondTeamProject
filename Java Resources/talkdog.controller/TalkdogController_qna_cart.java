@@ -16,9 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import talkdog.dao.AdminDAO;
 import talkdog.dao.CartDAO;
-import talkdog.dao.MasterDAO;
 import talkdog.dao.QnaDAO;
 import talkdog.vo.CartVO;
 import talkdog.vo.ProductVO;
@@ -35,9 +33,6 @@ public class TalkdogController_qna_cart extends HttpServlet {
    private CartDAO cdao;
    private QnaDAO qdao;
    
-	private MasterDAO masdao;
-	private AdminDAO adao;
-   
 
    public void init(ServletConfig config) throws ServletException {
 	   ServletContext servletCtx = config.getServletContext();
@@ -46,9 +41,6 @@ public class TalkdogController_qna_cart extends HttpServlet {
 		
 		cdao = new CartDAO(con);
 		qdao = new QnaDAO(con);
-		
-		adao = new AdminDAO(con);
-		masdao = new MasterDAO(con);
    }
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
