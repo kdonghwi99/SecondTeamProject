@@ -142,38 +142,37 @@ CREATE TABLE payment (
 );
 
 CREATE TABLE comm (
-	cm_no	NUMBER		NOT NULL,
-	cm_title	VARCHAR2(50)		NOT NULL,
-	cm_cont	VARCHAR2(999)		NOT NULL,
-	cm_heart	NUMBER		NOT NULL,
-	cm_hit	NUMBER		NOT NULL,
-	cm_reply	NUMBER		NOT NULL,
-	comm_Date	DATE		NOT NULL,
-	adm_id	VARCHAR2(50)		NOT NULL,
-	category_no	NUMBER		NOT NULL
+   cm_no   NUMBER      NOT NULL,
+   cm_title   VARCHAR2(999)      NOT NULL,
+   cm_cont   VARCHAR2(999)      NOT NULL,
+   cm_heart   NUMBER      NOT NULL,
+   cm_hit   NUMBER      NOT NULL,
+   comm_Date   DATE      NOT NULL,
+   adm_id   VARCHAR2(50)      NOT NULL,
+   category_no   NUMBER      NOT NULL
 );
 
 CREATE TABLE notice (
-	not_no	NUMBER		NOT NULL,
-	not_categoty	VARCHAR(20)		NOT NULL,
-	not_title	VARCHAR(20)		NOT NULL,
-	not_cont	VARCHAR(999)		NOT NULL,
-	not_hit	NUMBER		NOT NULL,
-	not_image	VARCHAR(100)		 NULL,
-	not_date	DATE		NOT NULL
+   not_no   NUMBER      NOT NULL,
+   not_category   VARCHAR(50)      NOT NULL,
+   not_title   VARCHAR(999)      NOT NULL,
+   not_cont   VARCHAR(999)      NOT NULL,
+   not_hit   NUMBER      NOT NULL,
+   not_image   VARCHAR(100)       NULL,
+   not_date   DATE      NOT NULL
 );
 
 CREATE TABLE commReply (
-	cmre_no	NUMBER		NOT NULL,
-	cmre_cont	VARCHAR2(999)		NOT NULL,
-	cmre_date	DATE		NOT NULL,
-	cm_no	NUMBER		NOT NULL,
-	adm_id	VARCHAR2(50)		NOT NULL
+   cmre_no   NUMBER      NOT NULL,
+   cmre_cont   VARCHAR2(999)      NOT NULL,
+   cmre_date   DATE      NOT NULL,
+   cm_no   NUMBER      NOT NULL,
+   adm_id   VARCHAR2(50)      NOT NULL
 );
 
 CREATE TABLE category (
-	category_no	NUMBER		NOT NULL,
-	category	VARCHAR2(20)		NOT NULL
+   category_no   NUMBER      NOT NULL,
+   category   VARCHAR2(20)      NOT NULL
 );
 
 ALTER TABLE cart ADD CONSTRAINT PK_CART PRIMARY KEY (
@@ -306,6 +305,10 @@ alter table admin MODIFY adm_type CHARACTER default '0';
 	-- test t_num 시퀀스
 	CREATE SEQUENCE test_seq START WITH 1 INCREMENT BY 1 NOMAXVALUE;
 
+CREATE SEQUENCE COMMUNITY_SEQ INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE NOTICE_SEQ INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
+
 	--주문 번호 생성 트리거
 	create or replace TRIGGER TRG_GENERATE_ORD_NO
 	BEFORE INSERT ON order_
@@ -385,7 +388,32 @@ alter table admin MODIFY adm_type CHARACTER default '0';
 	insert into payment (pay_no, pay_agree, pay_total, ord_no, pay_date, pay_canceldate, adm_id)
     values (2023080702, 11111, 130000, 2308060004, TO_DATE('2023-08-07', 'YYYY-MM-DD'), NULL, 'aaa');
 
+-- category insert
+INSERT INTO category values(1, '사랑');
+INSERT INTO category values(2, '정신건강');
+INSERT INTO category values(3, '취업/학업');
+INSERT INTO category values(4, '인간관계');
+INSERT INTO category values(5, '기타');
 
+-- community insert
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'title','cont',2,3,sysdate,'test',1);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'ttttt','ccccc',2,3,sysdate,'test',2);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'아야','아야아야',2,3,sysdate,'test',3);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'tete','concon',2,3,sysdate,'test',4);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'tete','concon',2,3,sysdate,'admin',2);
+
+-- notice insert
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '공지사항', '공지1', '공지공지', 0, 'image', SYSDATE);
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '공지사항', '공지2', '공지공지', 0, 'image', SYSDATE);
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '이벤트1', '공지공지', 0, 'image', SYSDATE);
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '이벤트2', '공지공지', 0, 'image', SYSDATE);
+
+-- commReply insert
+INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글', SYSDATE, 7, 'test');
+INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓ㅐㅐ대대대ㅐ대ㅐ댓글', SYSDATE, 7, 'test');
+INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글3333333333333', SYSDATE, 7, 'test');
+INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글4', SYSDATE, 8, 'test');
+INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글4', SYSDATE, 8, 'admin');
 
 ---- 테이블 삭제 구문
 DROP TABLE category;
