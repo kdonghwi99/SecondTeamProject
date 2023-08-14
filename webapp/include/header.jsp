@@ -10,8 +10,8 @@
   .large-image {
   		margin-bottom : 0px;
   		margin-top: 15px;
-        width: 120px;
-        height: 120px; 
+        width: 60px;
+        height: 60px; 
     }
 </style>
 <meta charset="utf-8">
