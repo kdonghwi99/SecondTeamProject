@@ -105,8 +105,7 @@ public class TalkdogController_qna_cart extends HttpServlet {
 		
 		System.out.println("pageNum, category : " + pageNum + ", " + category );
 		
-		int qnaCnt = qdao.qnaCount(category);					//totalCount(전체 게시물 수) 
-//		System.out.println("현재 문의글 건수: " + qnaCnt);
+		int qnaCnt = qdao.qnaCount(category);					//totalCount(전체 게시물 수)
 		int pages = (int)(Math.ceil(qnaCnt / AMOUNT_PER_PAGE));				//pages(총 페이지 수) : 올림 -> 전체 게시물 개수 /페이지당 표시할 게시물 개수
 		
 		//각 페이지의 시작 번호 | . . . | 끝 번호
@@ -303,7 +302,6 @@ public class TalkdogController_qna_cart extends HttpServlet {
 	public void qnaRemove(HttpServletRequest request) {
 
 		int qnaNo = Integer.parseInt(request.getParameter("qnaNo"));	
-//		일단 삭제로직 짜야해서 category는 잠깐 보류
 		String category = request.getParameter("category");
 		
 		System.out.println("pageNum이 null인지 체크 -> " + request.getParameter("pageNum") + "category는 : " + category);
@@ -316,7 +314,6 @@ public class TalkdogController_qna_cart extends HttpServlet {
 			session.setAttribute("msg", "문의글 삭제에 실패하였습니다.");
 		}
 		
-//		url = "./list.do?pageNum=1&category="+category;
 		url = "./list.do?pageNum="+pageNum + "&category=" + category;
 	}
 	
@@ -407,9 +404,12 @@ public class TalkdogController_qna_cart extends HttpServlet {
 	
 	//장바구니 개별삭제 (개별상품 삭제)
 	public void cartRemove(HttpServletRequest request) {
-		int cartNo = Integer.parseInt(request.getParameter("cartNo"));		//특정 장바구니 삭제를 위해 필요
-		String sid = request.getParameter("sid");										//삭제 후 장바구니 조회를 위해 필요
-		
+		//세션에 담아둔 sid
+		HttpSession session = request.getSession();
+				
+		String sid = (String) session.getAttribute("sid");
+		int cartNo = Integer.parseInt(request.getParameter("cartNo"));		//특정 장바구니 삭제를 위해 필요								
+																											//삭제 후 장바구니 조회를 위해 필요
 		if(cdao.cartRemove(cartNo)==false) {
 			session.setAttribute("msg", "삭제에 실패했습니다.");
 		};
@@ -419,7 +419,10 @@ public class TalkdogController_qna_cart extends HttpServlet {
 	
 	//장바구니 전체삭제 (특정회원의 장바구니 전체삭제)
 	public void cartRemoveAll(HttpServletRequest request) {
-		String sid = request.getParameter("sid");
+		//세션에 담아둔 sid
+		HttpSession session = request.getSession();
+				
+		String sid = (String) session.getAttribute("sid");
 		
 		if(cdao.cartRemoveAll(sid) == true ) {
 			session.setAttribute("msg", "장바구니를 초기화하였습니다.");
@@ -450,8 +453,6 @@ public class TalkdogController_qna_cart extends HttpServlet {
 		url = "./CartList.do?sid="+sid;
 	}
 
-	
-	
       
 
 }
