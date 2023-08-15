@@ -1,44 +1,10 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="kr">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Eterna Bootstrap Template - Index</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-
-</head>
+<html>
 
 <body>
-
- <!-- header start -->
-<%@ include file="/include/header.jsp" %>
- <!-- header end -->
- 
+  <%@ include file="/include/header.jsp" %>
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container">
@@ -49,33 +15,20 @@
         <div class="carousel-inner" role="listbox">
 
           <!-- Slide 1 -->
-          <div class="carousel-item active" style="background-image: url(/talkdog/resources/images/dog1.png)">
+          <div class="carousel-item active" style="background-image: url(resources/images/dog1.png)">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>다 들어줄개</span></h2>
-                <p class="animate__animated animate__fadeInUp">welcome</p>
+                <a href="/talkdog/Comm/CommListAll.do?pageNum=1&type=&keyword=&catNo=0" class="btn-get-started animate__animated animate__fadeInUp">더 보 시 개</a>
               </div>
+              
             </div>
           </div>
 
           <!-- Slide 2 -->
-          <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg)">
+          <div class="carousel-item" style="background-image: url(resources/images/dog2.png)">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated fanimate__adeInDown"> 고민상담 <span> talkdog </span></h2>
-                <p class="animate__animated animate__fadeInUp">Please share your concerns that you can't talk about</p>
-                <a href="/talkdog/Comm/CommListAll.do?pageNum=1&type=&keyword=&catNo=0" class="btn-get-started animate__animated animate__fadeInUp">Click Here</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="carousel-item" style="background-image: url(/talkdog/resources/images/dog2.png)">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown"> 골라보시개 <span> goods </span></h2>
-                <p class="animate__animated animate__fadeInUp">There'll be things that will help</p>
-                <a href="/talkdog/product/productlist.jsp" class="btn-get-started animate__animated animate__fadeInUp">Click Here</a>
+                <a href="" class="btn-get-started animate__animated animate__fadeInUp">더 보 시 개</a>
               </div>
             </div>
           </div>
@@ -119,7 +72,7 @@
             <div class="icon-box">
               <i class="bi bi-binoculars"></i>
               <h3><a href="/talkdog/test/testMain.jsp">자가진단</a></h3>
-              <p>자신의 상태 검증 가능</p>
+              <p>본인의 상태를 검증해보세요</p>
             </div>
           </div>
         </div>
@@ -127,13 +80,9 @@
       </div>
     </section><!-- End Featured Section -->
 
- 
-
   </main><!-- End #main -->
 
- <!-- footer start -->
-<%@ include file="/include/footer.jsp" %>
- <!-- footer end -->
+ <%@ include file="/include/footer.jsp" %>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
