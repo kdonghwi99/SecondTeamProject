@@ -394,17 +394,24 @@ INSERT INTO category values(4, '인간관계');
 INSERT INTO category values(5, '기타');
 
 -- community insert
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'title','cont',2,3,sysdate,'test',1);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'ttttt','ccccc',2,3,sysdate,'test',2);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'아야','아야아야',2,3,sysdate,'test',3);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'tete','concon',2,3,sysdate,'test',4);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'tete','concon',2,3,sysdate,'admin',2);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'정말 고민입니다..','고민고민',2,3,sysdate,'test',1);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'너무 힘드네요','힘들엉',2,3,sysdate,'test',2);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'어려워요ㅠ','어려워',2,3,sysdate,'test',3);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'사람 만나기 무서워요','무서웡',2,3,sysdate,'test',4);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'여자친구가 좋아할 선물','고민고민',2,3,sysdate,'aaa',1);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'살기 싫어요','우울해',2,3,sysdate,'aaa',2);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'취업하고싶은데..','어려워',2,3,sysdate,'aaa',3);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'저희 직장에 대머리 부장님이 계신데','성격이 이상해!',2,3,sysdate,'aaa',4);
 
 -- notice insert
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '공지사항', '공지1', '공지공지', 0, 'image', SYSDATE);
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '공지사항', '공지2', '공지공지', 0, 'image', SYSDATE);
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '이벤트1', '공지공지', 0, 'image', SYSDATE);
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '이벤트2', '공지공지', 0, 'image', SYSDATE);
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '공지사항', '공지사항입니다', '8월 16일 오전 9시부터 서버 점검이 있을 예정입니다. 홈페이지 이용에 참고 바랍니다.', 0, null, SYSDATE);
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230707이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-07-07');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230716이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-07-16');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230730이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-07-30');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230801이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-08-01');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230811이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-08-11');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230816이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-08-16');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230707이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-07-07');
 
 -- commReply insert
 INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글', SYSDATE, 7, 'test');
