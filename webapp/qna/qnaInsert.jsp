@@ -25,6 +25,8 @@
 	.select-container select {
 	  margin-right: 10px; /* 두 요소 사이의 간격을 설정 */
 	}
+	#notice{
+	color: red;}
 </style>
 </head>
 
@@ -51,7 +53,6 @@
 		<div class="row" id="row">
 		<div class="col-lg-6">
             <form action="./Write.do" method="post" class="php-email-form" accept-charset="UTF-8">
-              
               <div class="row">
               <div class="col-md-6 form-group">
 				  <div class="select-container">
@@ -73,6 +74,8 @@
 					</div>
 			  </div>
               </div>
+              
+              <span id="notice">※ 주문 및 배송 관련 문의 시, 주문번호(배송번호)를 함께 기입하시면 더욱 빠른 확인이 가능합니다.</span>
               
               <div class="form-group mt-3">
               <label>제목</label>
