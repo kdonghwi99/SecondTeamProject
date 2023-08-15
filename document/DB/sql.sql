@@ -104,7 +104,7 @@ CREATE TABLE delivery (
 	del_address3	VARCHAR2(50)		NULL,
 	del_phone	VARCHAR2(50)		NOT NULL,
 	del_memo	VARCHAR2(50)		NULL,
-	ord_no	VARCHAR2(50)		NOT NULL,
+	ord_no	VARCHAR2(50)		NULL,
 	adm_id	VARCHAR2(50)		NULL
 );
 
