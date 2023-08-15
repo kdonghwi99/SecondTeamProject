@@ -107,7 +107,7 @@
    </div>
          <nav id="navbar" class="navbar">
             <ul>
-               <li><a href="#">자가진단</a></li>
+               <li><a href="/talkdog/test/testMain.jsp">자가진단</a></li>
                <li class="dropdown"><a href="#"><span>공지사항/이벤트</span> <i class="bi bi-chevron-down"></i></a>
                   <ul>
                   <li><a href="/talkdog/Notice/NoticeList.do?pageNum=1&type=&keyword=&category=공지사항">공지사항</a></li>
