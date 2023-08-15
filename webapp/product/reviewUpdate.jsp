@@ -4,81 +4,76 @@
     String reviewContent = (String) request.getAttribute("review");
 %>
 <!DOCTYPE html>
+<html>
 <head>
-<!-- 팝업을 여닫는 자바스크립트 -->
-<script>
-window.onload = function() {
-    var reviewBtn = document.getElementById("reviewBtn");
-    if (reviewBtn) {
-      reviewBtn.onclick = function() {
-        var modal = document.getElementById("myModal");
-        var span = document.getElementsByClassName("close")[0];
-
-        modal.style.display = "block";
-
-        span.onclick = function() {
-          modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        }
-      }
-    }
-}
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>리뷰 작성 팝업</title>
 <style>
-    /* 팝업 스타일 */
-    .modal {
-        display: none;  /* 우선 안보이게 */
-        position: fixed;  /* 화면 상단에 위치 */
-        z-index: 1;  /* 다른 요소 위에 위치 */
-        padding-top: 100px;  /* 팝업 상단 여백 */
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;  /* 팝업이 너무 길 경우 스크롤바 */
-        background-color: rgba(0,0,0,0.4);  /* 검은 배경 반투명 */
+    .wrapper {
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
     }
 
-    /* 팝업 내용 스타일 */
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
+    form {
+        padding: 30px;
+        background-color: #f5f5f5;
+        box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+        border-radius: 10px;
+        width: 50%;
         max-width: 500px;
     }
 
-    /* 팝업 닫기 버튼 스타일 */
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
+    h1 {
+        font-size: 24px;
         font-weight: bold;
+        margin-bottom: 20px;
     }
 
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
+    label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    textarea {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        font-family: 'Arial', sans-serif;
+        margin-bottom: 20px;
+        resize: none;
+        border: 1px solid #ccc;
+    }
+
+    input[type="submit"],
+    input[type="button"] {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        font-size: 14px;
+        padding: 10px 20px;
         cursor: pointer;
+        text-transform: uppercase;
+        margin-right: 10px;
+        border-radius: 5px;
     }
 
+    input[type="button"] {
+        background-color: #6c757d;
+    }
 </style>
 </head>
 <body>
-  <h1>리뷰 수정</h1>
+<div class="wrapper">
   <form method="post" action="/talkdog/ReviewUpdate.do">
     <input type="hidden" name="pId" value="<%=request.getParameter("pId")%>" />
     <input type="hidden" name="rNo" value="<%=request.getParameter("rNo")%>" />
+    <h1>리뷰 수정</h1>
     <div>
       <label for="review">리뷰 작성:</label>
 <textarea name="review" id="review" rows="4" cols="40"><%=reviewContent != null ? reviewContent : "" %></textarea>
@@ -88,8 +83,6 @@ window.onload = function() {
       <input type="button" value="취소" onclick="window.close();" />
     </div>
   </form>
-</body>
-
-
+</div>
 </body>
 </html>
