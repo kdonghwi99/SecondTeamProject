@@ -1,7 +1,6 @@
 package talkdog.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
@@ -47,15 +46,16 @@ public class controller extends HttpServlet {
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException, IOException {
+	   
 	    doPost(request, response);
 	}
 
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	    String cmd = request.getRequestURI()
-	            .substring(request.getContextPath()
-	                              .length());
+	   url = "/index.jsp";
+	    
+	    String cmd = request.getRequestURI().substring(request.getContextPath().length());
 	    session = request.getSession();
 		
 	    // cmd에 따라 각 해당 메서드 호출
@@ -65,8 +65,7 @@ public class controller extends HttpServlet {
 	        return;
 	    }
 	    else if (cmd.equals("/ReviewDelete.do")) {
-	        reviewDelete(request);
-	        response.sendRedirect(url);
+	        reviewDelete(request, response);
 	        return;
 	    }
 	    
@@ -108,135 +107,49 @@ public class controller extends HttpServlet {
 		url = "/product/productlist.jsp";
 	}
 	
-	private void remove(HttpServletRequest request) {
-        // 제거 작업을 수행하기 위한 로직을 구현하세요
-    }
 
-    private void modify(HttpServletRequest request) {
-        // 수정 작업을 수행하기 위한 로직을 구현하세요
-    }
-   
-      public void write(HttpServletRequest request) {
-      }
-      
-      public void view(HttpServletRequest request) {
-      }
-      
-      private void update(HttpServletRequest request) {
-         
-      }
-      
-      private void delete(HttpServletRequest request) {
-      
-      }
+	public void memberreview(HttpServletRequest request) {
+		
+		
+	}
 
-   // 상품 등록
-    public void productEnroll(HttpServletRequest request) {
-    }
-
-    // 상품 수정
-    public void productUpdate(HttpServletRequest request) {
-    }
-
-    // 상품 삭제
-    public void productDelete(HttpServletRequest request) {
-
-    }
-
-    // 상품 상세 조회
-    public void productSelect(HttpServletRequest request) {
-  
-    }
-    
-
-    // 상품 리뷰 등록
-    public void reviewEnroll(HttpServletRequest request) {
-
-    }
-
-    // 상품 리뷰 목록 상품별로 조회
-    public void reviewSelect(HttpServletRequest request) {
-       
-    }
-
-    // 상품 리뷰 목록 회원별로 조회
-    public void memberreview(HttpServletRequest request) {
-       
-    }
-    
-    private void reviewUpdate(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int rNo = Integer.parseInt(request.getParameter("rNo"));
-        String admId = request.getParameter("admId");
-        String review = request.getParameter("review");
-        String pId = request.getParameter("pId");
-
-        ReviewVO rvo = new ReviewVO();
-        rvo.setrNo(rNo);
-        rvo.setAdmId(admId);
-        rvo.setReview(review);
-        rvo.setpId(pId);
-
-        rdao.reviewUpdate(rvo);
-        
-        response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("<script>");
-        out.println("alert('리뷰가 수정되었습니다.');");
-        out.println("opener.window.location.reload();");
-        out.println("window.close();");
-        out.println("</script>");
-        
-    }
-
-    private void reviewDelete(HttpServletRequest request) {
-        int rNo = Integer.parseInt(request.getParameter("rNo"));
-        rdao.reviewDelete(rNo);
-
-        String pid = request.getParameter("pId");
-        url = "talkdog/product/productInfo.jsp?pid=" + pid;
-    }
-   
-        // 자가진단 항목 추가
-    public void testEnroll(HttpServletRequest request) {
-
-    }
-
-      // 자가진단결과 추가
-    public void testresultEnroll(HttpServletRequest request) {
-
-    }
-
-
-    // 자가진단 항목 개별 수정
-    public void testUpdate(HttpServletRequest request) {
-
-    }
-
-    // 자가진단 항목 개별 삭제
-    public void testDelete(HttpServletRequest request) {
  
-    }
-
-    // 자가진단 항목 조회
-    public void testSelect(HttpServletRequest request) {
     
-    }
+	private void reviewUpdate(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	    int rNo = Integer.parseInt(request.getParameter("rNo"));
+	    String admId = request.getParameter("admId");
+	    String review = request.getParameter("review");
+	    String pId = request.getParameter("pId");
 
-   // 자가진단 결과내용 조회
-    public void testResultSelect(HttpServletRequest request) {
+	    ReviewVO rvo = new ReviewVO();
+	    rvo.setrNo(rNo);
+	    rvo.setAdmId(admId);
+	    rvo.setReview(review);
+	    rvo.setpId(pId);
 
-    }
+	    rdao.reviewUpdate(rvo);
+	    url = "/talkdog/product/productInfo.jsp?pid=" + rvo.getpId();
+	    response.sendRedirect(url);
+	    return;
+	}
 
-    // 자가진단 상세보기
-    public void testSelectDetail(HttpServletRequest request) {
+	private void reviewDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	    int rNo = Integer.parseInt(request.getParameter("rNo"));
+	    String pId = request.getParameter("pId");
 
-    }
+	    ReviewVO rvo = new ReviewVO();
+	    rvo.setrNo(rNo);
+	    rvo.setpId(pId);
+
+
+	    rdao.reviewDelete(rvo);
+	    url = "/talkdog/product/productInfo.jsp?pid=" + rvo.getpId();
+	    response.sendRedirect(url);
+	    return;
+
+	}
    
 
-    // 자가진단 결과 초기화
-    public void resultDelete(HttpServletRequest request) {
-
-    }
 
 
 
