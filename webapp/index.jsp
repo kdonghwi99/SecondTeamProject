@@ -28,7 +28,7 @@
           <div class="carousel-item" style="background-image: url(resources/images/dog2.png)">
             <div class="carousel-container">
               <div class="carousel-content">
-                <a href="" class="btn-get-started animate__animated animate__fadeInUp">더 보 시 개</a>
+                <a href="/talkdog/product/productlist.jsp" class="btn-get-started animate__animated animate__fadeInUp">더 보 시 개</a>
               </div>
             </div>
           </div>
