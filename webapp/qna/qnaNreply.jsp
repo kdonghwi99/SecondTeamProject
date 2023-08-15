@@ -173,7 +173,7 @@
 			  <a href="./list.do?pageNum=${pageNum }&category=${category }" class="btn btn-secondary">목록</a>
 			  <c:if test="${sid eq qvo.admId}">
 			  	<a id="modify" href="./ModifyForm.do?pageNum=${pageNum }&category=${category }&qnaNo=${qvo.qnaNo }" class="btn btn-success regBtn">수정</a>
-			  	<a id="remove" onclick="delChk(${qvo.qnaNo}, '${category }', ${pageNum });" class="btn btn-danger regBtn">삭제</a>
+			  	<a id="remove" onclick="qnaDelChk(${qvo.qnaNo}, '${category }', ${pageNum });" class="btn btn-danger regBtn">삭제</a>
 			  </c:if>
 <!--              <input type="button" id="modify" class="btn btn-warning regBtn" onclick="modify(${qvo.qnaNo}, ${category });" value="수정"/> -->
 <!--              <input type="button" id="remove" class="btn btn-danger regBtn" onclick="delChk(${qvo.qnaNo}, ${category });" value="삭제"/> -->
