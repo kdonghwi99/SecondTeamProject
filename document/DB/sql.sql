@@ -97,7 +97,7 @@ CREATE TABLE testresult (
 );
 
 CREATE TABLE delivery (
-	del_no	NUMBER		NOT NULL,
+	del_no		VARCHAR2(50)		NOT NULL,
 	del_name	VARCHAR2(50)		NOT NULL,
 	del_address1	VARCHAR2(50)		NOT NULL,
 	del_address2	VARCHAR2(50)		NOT NULL,
