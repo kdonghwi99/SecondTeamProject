@@ -77,6 +77,13 @@
  <!-- header start -->
 <%@ include file="../include/header.jsp" %>
  <!-- header end -->
+<!-- msg에 내용이 있을 경우 alert으로 출력 -->
+<c:if test="${!empty msg }">
+	<script>
+			alert('${msg}');
+	</script>
+	<%session.removeAttribute("msg"); 	//alert 띄우고 msg속성 초기화(제거)%>
+</c:if>
 
   <main id="main">
 
@@ -120,11 +127,10 @@
 </div>
 	</div>
       </div>
-
         <div class="col-lg-4">
         <div class="portfolio-info">
             <h3>상품 정보</h3>
-         
+         <form method="post" action="/talkdog/Cart/CartAdd.do">
         <ul>
         <% if(pvo != null) { %>
           <li><strong>상품 이름</strong>: <%=pvo.getpName()%></li>
@@ -136,18 +142,18 @@
                 <strong>상세 설명을 불러올 수 없습니다.</strong>
             <% } %></li>
           <strong>수량 </strong>  
-          <select name="option" class="form-select" name="cartOpt">
+          <select name="cartQuan" class="form-select">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
-		</select>
+			</select>
 		<% if (pvo != null && pvo.getpType() != null && !pvo.getpType().equals("null")) { %>
             <li>
                 <strong>옵션 </strong>
                 <div class="options">
-                    <select name="option" class="form-select">
+                    <select name="cartOpt" class="form-select">
                         <% if (pvo.getpType().equals("size")) { %>
                             <option value="S">Size: S</option>
                             <option value="M">Size: M</option>
@@ -156,6 +162,7 @@
                     </select>
                 </div>
             </li>
+            <input type="hidden" value=""/>
         <% } %> <!-- 이 부분 수정 -->
                 
                
@@ -165,10 +172,10 @@
         <% if (pvo != null) { %>
             <h3><%=pvo.getpPrice() %>원</h3>
             <div class="buttons">
-                <form method="post" action="../cart/cartAddProc.jsp">
+               
                     <input type="hidden" name="pid" value="<%=pvo.getpId() %>">
-                    <a id="cartin" href="#" class="btn btn-info cartAddBtn">장바구니 담기 &raquo;</a>
-                    <a href="/talkdog/cart/cart.jsp" class="btn btn-warning">장바구니 보기 &raquo;</a>
+                    <input type="submit" id="cartin" class="btn btn-info cartAddBtn" value="장바구니 담기&raquo"/>
+                    <a href="/talkdog/Cart/CartList.do" class="btn btn-warning">장바구니 보기 &raquo;</a>
                     <a href="/talkdog/product/productlist.jsp" class="btn btn-secondary">상품 목록 &raquo;</a>
                 </form>
             </div>
