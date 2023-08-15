@@ -59,15 +59,14 @@ public class CartDAO {
 	   public boolean cartInsert(String sid, String pId, int cartQuan, String cartOpt) {
 		   try {
 				// insert 쿼리문
-				query = "INSERT INTO cart VALUES (CART_SEQ.NEXTVAL, ?, ?, ?, ?);";
-				
-				if(cartOpt.equals("")) {
+				query = "INSERT INTO cart VALUES (CART_SEQ.NEXTVAL, ?, ?, ?, ?)";
+				if(cartOpt==null) {
 					cartOpt = "옵션없음";
 				}
-				
+				System.out.println("cartOpt: " + cartOpt);
 				pstmt = con.prepareStatement(query);
-				pstmt.setString(1, sid);
-				pstmt.setString(2, pId);
+				pstmt.setString(1, pId);
+				pstmt.setString(2, sid);
 				pstmt.setInt(3, cartQuan);
 				pstmt.setString(4, cartOpt);
 				
