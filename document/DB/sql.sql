@@ -349,13 +349,13 @@ CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
 	INSERT INTO admin VALUES ('aaa', 'aaa', 'aaa', '1111','01010','aaa1', 'aaa2', 'aaa3', '010-1222-2222', 'aaa@gmail.com', null, null, '0', '20200212');
 
 	-- cart
-	INSERT INTO cart VALUES (CART_SEQ.NEXTVAL, 'p001', 'aaa', 1, '화이트');
+	INSERT INTO cart VALUES (CART_SEQ.NEXTVAL, 'p1515', 'aaa', 1, '--옵션없음--');
 	
 	--qna
 	INSERT INTO qna VALUES (QNA_SEQ.NEXTVAL, SYSDATE, '답변대기', '주문관련', '취소','주문한 거 취소하고 싶어요.', '어쩌구저쩌구 샬라샬라 샀는데 이거 취소처리 해주세요.', NULL, NULL, 'test1');
 
 	--product
-    Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1717','djks',234,'dasfsafas',15,'medi',to_date('23/08/08','RR/MM/DD'),'p1717.jpg','i1717.jpg',null);
+    	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1717','djks',234,'dasfsafas',15,'medi',to_date('23/08/08','RR/MM/DD'),'p1717.jpg','i1717.jpg',null);
 	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1414','juyo',45,'ggggg',12,'book',to_date('23/08/08','RR/MM/DD'),'p1414.jpg','i1414.jpg',null);
 	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1515','hihihi',673,'product test test hahahahah',200000,'book',to_date('23/08/08','RR/MM/DD'),'p1515.jpg','i1515.jpg',null);
 	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1818','sf',645,'sdfasfsa',16,'medi',to_date('23/08/08','RR/MM/DD'),'p1818.jpg','i1818.jpg',null);
