@@ -29,7 +29,7 @@ import talkdog.vo.ProductVO;
 import talkdog.vo.CartVO;
 
 @WebServlet("/Order/*")
-public class TalkdogController_Ord_Pay_Del extends HttpServlet {
+public class OrderController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private HttpSession session; // 로그인한 사람만 하려면 세션이 필요, 서블릿은 세션이 내장객체가 아니라서 필요함
@@ -70,27 +70,27 @@ public class TalkdogController_Ord_Pay_Del extends HttpServlet {
 		// <cmd에 따라 각 해당 메서드 호출>
 		if (cmd.equals("/DeliveryView.do")) { // 배송정보 상세 조회
 			delSelect(request);
-		} else if (cmd.equals("/InsertForm.do")) // 주문정보, 배송정보, 결제 정보 등록 폼
+		} else if (cmd.equals("/Order/InsertForm.do")) // 주문정보, 배송정보, 결제 정보 등록 폼
 		{
 			url = "/order/orderEnroll.jsp";
-		} else if (cmd.equals("/Insert.do")) { // 주문정보, 배송정보, 결제 정보 등록
+		} else if (cmd.equals("/Order/Insert.do")) { // 주문정보, 배송정보, 결제 정보 등록
 			System.out.println("부르긴 부름");
 			allInsert(request);
-		} else if (cmd.equals("/OrderList.do")) { // 주문정보 전체 조회
+		} else if (cmd.equals("/Order/OrderList.do")) { // 주문정보 전체 조회
 			ordSelectAll(request);
-		} else if (cmd.equals("/OrderView.do")) { // 주문정보 상세 조회
+		} else if (cmd.equals("/Order/OrderView.do")) { // 주문정보 상세 조회
 			ordSelect(request, response);
 			response.sendRedirect(url);
-		} else if (cmd.equals("/OrderUpdateForm.do")) { // 주문정보 수정 폼
+		} else if (cmd.equals("/Order/OrderUpdateForm.do")) { // 주문정보 수정 폼
 			ordUpdateForm(request);
-		} else if (cmd.equals("/OrderUpdate.do")) { // 주문정보 수정
+		} else if (cmd.equals("/Order/OrderUpdate.do")) { // 주문정보 수정
 			ordUpdate(request);
 			response.sendRedirect(url);
 			return;
-		} else if (cmd.equals("/PayView.do")) { // 결제 정보 상세 조회
+		} else if (cmd.equals("/Order/PayView.do")) { // 결제 정보 상세 조회
 			paySelect(request, response);
 			response.sendRedirect(url);
-		} else if (cmd.equals("/PayModify.do")) { // 결제 정보 수정
+		} else if (cmd.equals("/Order/PayModify.do")) { // 결제 정보 수정
 			payUpdate(request);
 			response.sendRedirect(url);
 		} else {
