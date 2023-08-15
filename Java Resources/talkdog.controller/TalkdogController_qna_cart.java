@@ -379,23 +379,20 @@ public class TalkdogController_qna_cart extends HttpServlet {
 		int cartQuan = Integer.parseInt(request.getParameter("cartQuan"));
 		String cartOpt = request.getParameter("cartOpt");
 		
+		//새롭게 넘어온 옵션이 null이면 "옵션없음"으로 바꿔주기
+		if(cartOpt==null) {
+			cartOpt = "옵션없음";
+		}
+		
 		boolean check = false;		//장바구니 목록에 pId가 있었는지 없었는지 체크해줄 flag변수
 		
 		List<CartVO> cartList = null;
 		cartList = cdao.cartSelectAll(sid);		//현재 로그인한 사람의 장바구니목록
 		
-		for(CartVO cvo : cartList) {					//현재 로그인한 사람의 장바구니 목록에 해당 pId가 있는 경우
-			System.out.println("cartList에 담겨있던 cvo의 cartOpt : " +cvo.getCartOpt() );
-			System.out.println("새롭게 넘어온 cartOpt : " +cartOpt);
-			System.out.println("새롭게 넘어온 cartQuan : " +cartQuan);
-			
-			//새롭게 넘어온 옵션이 null이면 "옵션없음"으로 바꿔주기
-			if(cartOpt==null) {
-				cartOpt = "옵션없음";
-			}
+		for(CartVO cvo : cartList) {					//현재 로그인한 사람의 장바구니 목록에 해당 pId가 있는 경우	
 			if(cvo.getpId().equals(pId) && cvo.getCartOpt().equals(cartOpt)) {
-				cvo.setCartQuan(cvo.getCartQuan() +cartQuan);
-				cdao.cartUpdate(cvo.getCartQuan(), cvo.getCartNo());
+				cvo.setCartQuan(cvo.getCartQuan() +cartQuan);			//기존 수량에 새로운 수량을 추가한 후
+				cdao.cartUpdate(cvo.getCartQuan(), cvo.getCartNo());	//DB에 반영
 				session.setAttribute("msg", "상품을 장바구니에 추가했습니다.");
 				check = true;		//장바구니 목록에서 pId를 찾았다면
 				break;					//for문 탈출
