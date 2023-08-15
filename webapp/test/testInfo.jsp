@@ -1,8 +1,4 @@
-<%@page import="talkdog.vo.TestVO"%>
-<%@page import="talkdog.vo.TestVO"%>
-<%@page import="talkdog.vo.TestResultVO"%>
 <%@page import="talkdog.vo.TestnameVO"%>
-<%@page import="talkdog.vo.MemberResultVO"%>
 <%@page import="java.util.List"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
