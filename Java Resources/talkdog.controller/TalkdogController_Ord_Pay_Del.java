@@ -110,6 +110,10 @@ public class OrderController extends HttpServlet {
 	// 주문정보, 배송정보, 결제 정보 등록 /Insert.do
 	private void allInsert(HttpServletRequest request) {
 		
+		//세션에 담아둔 sid (현재 로그인한 아이디에 주문정보 등록 위함)
+		HttpSession session = request.getSession();
+		String sid = (String) session.getAttribute("sid");
+		
 		// 클라이언트로부터 받은 파라미터를 이용하여 DeliveryVO 객체 생성
 	    DeliveryVO dvo = new DeliveryVO();
 	    // DeliveryVO에 클라이언트로부터 받은 파라미터 값 넣기
@@ -176,9 +180,12 @@ public class OrderController extends HttpServlet {
 	private void ordSelectAll(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String sid = (String) session.getAttribute("sid");
+		// 클라이언트로부터 받은 파라미터를 이용하여 페이지 번호와 주문번호를 가져옵니다.
+		String ordNo = request.getParameter("ordNo");
+
 		
 		//로그인 한 사람의 주문내역 전체조회
-		List<OrderVO> ordList = odao.ordSelectAll("sid"); 
+		List<OrderVO> ordList = odao.ordSelectAll(ordNo,sid); 
 		Map<Number, CartVO> cartMap = new HashMap<>();	
 		for (OrderVO ovo : ordList) {
 			int cartNo = ovo.getCartNo();
@@ -189,15 +196,9 @@ public class OrderController extends HttpServlet {
 	        }
 	    }
 		
-		// 클라이언트로부터 받은 파라미터를 이용하여 페이지 번호와 주문번호를 가져옵니다.
-		String ordNo = request.getParameter("ordNo");
-		int cnt = odao.ordCount(ordNo); // 전체 주문내역 숫자
 		// ordSelectAll() 반환값을 요청객체의 ordList속성에 저장
 		request.setAttribute("ordList", ordList);
 		request.setAttribute("cartMap", cartMap);
-		request.setAttribute("cnt", cnt);
-		
-		System.out.println("주문/배송 건수: " + cnt);
 
 		// 조회한 결과를 적절한 방식으로 응답합니다.
 		url = "/order/orderListAll.jsp"; // 끝나면 정해진 url로 보냄
