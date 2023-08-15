@@ -363,6 +363,8 @@ public class TalkdogController_qna_cart extends HttpServlet {
 		    }
 		    request.setAttribute("cartList", cartList);
 		    request.setAttribute("productMap", productMap);		//상품명, 가격을 담은 Map
+		    session.setAttribute("cartList", cartList);					//주문하기에서 사용할 수 있도록 session에 저장
+		    session.setAttribute("productMap", productMap);
 		    
 		    url = "/cart/cart.jsp";
 	}
