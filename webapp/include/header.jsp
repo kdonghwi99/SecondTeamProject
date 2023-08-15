@@ -72,9 +72,6 @@
                <c:if test="${sessionScope.sid != 'admin'}">
                   <a href="/talkdog/mypage/memMypage.jsp">마이페이지&nbsp;</a>
                </c:if>
-               <c:if test="${sessionScope.sid == 'admin'}">
-                  <a href="/talkdog/mypage/admAllList.jsp">마이페이지&nbsp;</a>
-               </c:if>
             </c:if>
             <c:if test="${sessionScope.sid == 'admin'}">
                <a href="/talkdog/Cart/list.do?sid=${sid }"></a>
@@ -85,7 +82,7 @@
                      <span> </span>
                      <a href="/talkdog/product/productEdit.jsp?edit=remove">상품삭제&nbsp;</a>
                <span> </span>
-               <a href="#">이용자관리&nbsp;</a>
+               <a href="/talkdog/mypage/admAllList.jsp">이용자관리&nbsp;</a>
 
             </c:if>
    </div>
