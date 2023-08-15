@@ -84,15 +84,11 @@
 				<c:if test="${sessionScope.sid == 'admin'}">
 					<a href="/talkdog/Cart/list.do?sid=${sid }"></a>
 					<span> </span>
-					 <li class="nav-item">
-                        <a class="nav-link" style="color: white;" href="/talkdog/product/productAdd.jsp?language=ko">상품등록</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white;" href="/talkdog/product/productEdit.jsp?edit=modify">상품수정</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white;" href="/talkdog/product/productEdit.jsp?edit=remove">상품삭제</a>
-                    </li>
+					<a href="/talkdog/product/productAdd.jsp?language=ko">상품등록&nbsp;</a>
+					<span> </span>
+					<a href="/talkdog/product/productEdit.jsp?edit=modify">상품수정&nbsp;</a>
+					<span> </span>
+					<a href="/talkdog/product/productEdit.jsp?edit=remove">상품삭제&nbsp;</a>
 					<span> </span>
 					<a href="#">이용자관리&nbsp;</a>
 
@@ -138,7 +134,7 @@
 						</ul></li>
        					 
        					 <li><a href="/talkdog/Qna/list.do?pageNum=1&category=">문의게시판</a></li>
-         				 <li><a href="#">골라보시개🐶</a></li>
+         				 <li><a href="/talkdog/product/productlist.jsp">골라보시개🐶</a></li>
 						</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav><!-- .navbar -->
