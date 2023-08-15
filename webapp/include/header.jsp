@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +41,9 @@
   <!-- Template Main JS File -->
   <script src="/talkdog/assets/js/main.js"></script>
 </head>
+<% // Java 코드로 요청에서 세션을 가져옵니다.
+   String loggedInUser = (String) request.getSession().getAttribute("loggedInUser");
+%>
 <body>
 	<!-- ======= Top Bar ======= -->
 	<section id="topbar" class="d-flex align-items-center">
@@ -79,7 +84,15 @@
 				<c:if test="${sessionScope.sid == 'admin'}">
 					<a href="/talkdog/Cart/list.do?sid=${sid }"></a>
 					<span> </span>
-					<a href="#">상품관리&nbsp;</a>
+					 <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="/talkdog/product/productAdd.jsp?language=ko">상품등록</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="/talkdog/product/productEdit.jsp?edit=modify">상품수정</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="/talkdog/product/productEdit.jsp?edit=remove">상품삭제</a>
+                    </li>
 					<span> </span>
 					<a href="#">이용자관리&nbsp;</a>
 
