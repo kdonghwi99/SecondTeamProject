@@ -19,7 +19,7 @@ function insertCancel(event){
       
 
 //문의글삭제
-function delChk(qnaNo, category, pageNum){
+function qnaDelChk(qnaNo, category, pageNum){
 	if(confirm('해당 글을 삭제하시겠습니까?')){
 		//확인 클릭 시
 		location.href="./Remove.do?qnaNo=" + qnaNo + "&category=" + category+ "&pageNum=" + pageNum;
