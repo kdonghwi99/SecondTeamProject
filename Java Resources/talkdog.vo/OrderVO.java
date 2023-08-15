@@ -8,7 +8,7 @@ public class OrderVO {
     private int cartNo;			//장바구니 번호
     private Date ordDate;		//주문 날짜
     private String ordIng;		//주문 처리현황
-    private int invoiceNo;		//송장번호
+    private long invoiceNo;		//송장번호
 
     //생성자
 	public OrderVO() {
@@ -46,11 +46,11 @@ public class OrderVO {
 		this.ordIng = ordIng;
 	}
 
-	public int getInvoiceNo() {
+	public long getInvoiceNo() {
 		return invoiceNo;
 	}
 
-	public void setInvoiceNo(int invoiceNo) {
+	public void setInvoiceNo(long invoiceNo) {
 		this.invoiceNo = invoiceNo;
 	}
     
