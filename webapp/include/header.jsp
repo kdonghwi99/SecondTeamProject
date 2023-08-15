@@ -48,14 +48,12 @@
    <c:if test="${sessionScope.sid == null }">
       <div class="contact-info d-flex align-items-center">
          <a href="/talkdog">HOME</a>
-      <span></span>
-      </div>
-      <div class="social-links d-none d-md-flex align-items-center">
-         <a href="/talkdog/common/login.jsp">장바구니&nbsp;</a>
+          <a href="/talkdog/common/login.jsp">&nbsp;&nbsp;&nbsp;장바구니&nbsp;&nbsp;&nbsp;</a>
          <span> </span>
          <a href="/talkdog/common/login.jsp">마이페이지&nbsp;</a>
-
-
+      <span></span>
+      </div>
+	<div class="social-links d-none d-md-flex align-items-center">
          <a href="/talkdog/common/login.jsp" class="login">로그인</a>
          <a href="/talkdog/common/join.jsp" class="regi">회원가입</a>
       </div>
