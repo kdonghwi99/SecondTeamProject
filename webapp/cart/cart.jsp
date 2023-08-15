@@ -117,7 +117,7 @@
 		<br>
 		<br>	
 		<div class="text-right"> 
-			<a href="./InsertForm.do" class="btn btn-success" id="order">주문하기</a>
+			<a href="/talkdog/Order/InsertForm.do" class="btn btn-success" id="order">주문하기</a>
 		</div><br><br><br><br>
 	</c:if>
 		<!-- END 장바구니에 상품이 있는 경우 -->
