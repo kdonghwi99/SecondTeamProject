@@ -52,9 +52,10 @@ create table master (
 	mas_auth varchar2(100),
 	mas_prof varchar2(100),
 	mas_regi date not null,
-	mas_confirm char(1) not null,
+	mas_confirm char(1),
     mas_school varchar2(900)
 );
+alter table master add mas_cert varchar2(900);
 
 CREATE TABLE request (
 	adm_id	VARCHAR2(50)		NOT NULL
@@ -347,7 +348,16 @@ CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
 --6. 각 테이블에 insert 하기
 	--admin
 	INSERT INTO admin VALUES ('aaa', 'aaa', 'aaa', '1111','01010','aaa1', 'aaa2', 'aaa3', '010-1222-2222', 'aaa@gmail.com', null, null, '0', '20200212');
-	
+	insert into admin values('admin', 'admin', 'admin', '1111',
+	'01010','aaaa1', 'aaaa2', 'aaaa3', 
+	'010-1111-1111', 'admin@gmail.com', null, null, '0', '20200213');
+	insert into admin values('test', 'tester', '테스터', '1111',
+	'01010','aaaa1', 'aaaa2', 'aaaa3', 
+	'010-1111-1111', 'admin@gmail.com', null, null, '0', '20200213');
+	insert into admin values('master', 'master', '전문가', '1111',
+	'01010','aaaa1', 'aaaa2', 'aaaa3', 
+	'010-1111-1111', 'admin@gmail.com', null, null, '1', '20200213');
+
 	--qna (페이징 확인할 수 있게 5번 run)
 	INSERT INTO qna VALUES (QNA_SEQ.NEXTVAL, SYSDATE, '답변대기', '주문관련', '주문취소','주문한 거 취소하고 싶어요.', '주문번호 어쩌구저쩌구 샬라샬라 샀는데 이거 취소처리 해주세요.', NULL, NULL, 'aaa');
 	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '커뮤니티', null, '커뮤니티 관련 문의', '드립니다', null, null, 'aaa');
