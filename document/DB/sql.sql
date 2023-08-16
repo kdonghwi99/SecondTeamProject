@@ -348,10 +348,11 @@ CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
 	--admin
 	INSERT INTO admin VALUES ('aaa', 'aaa', 'aaa', '1111','01010','aaa1', 'aaa2', 'aaa3', '010-1222-2222', 'aaa@gmail.com', null, null, '0', '20200212');
 	
-	--qna (페이징 확인할 수 있게 6번 run)
+	--qna (페이징 확인할 수 있게 5번 run)
 	INSERT INTO qna VALUES (QNA_SEQ.NEXTVAL, SYSDATE, '답변대기', '주문관련', '주문취소','주문한 거 취소하고 싶어요.', '주문번호 어쩌구저쩌구 샬라샬라 샀는데 이거 취소처리 해주세요.', NULL, NULL, 'aaa');
 	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '커뮤니티', null, '커뮤니티 관련 문의', '드립니다', null, null, 'aaa');
 	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '커뮤니티', null, '커뮤니티 관련 문의', '드립니다', null, null, 'aaa');
+	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '기타', null, '문의사항을 ', '이러이러한 문의사항이 있어요.', null, null, 'aaa');
 	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '주문관련', '반품', '반품요청드립니다.', '주문번호 12341234 반품요청', null, null, 'aaa');
 	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '배송관련', null, '배송이 안됐는데 배송이 됐다고 뜹니다.', '주문번호는 45784578입니다. 뭐죠?', null, null, 'aaa');
 	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '커뮤니티', null, '커뮤니티 관련 문의', '드립니다', null, null, 'aaa');
@@ -359,6 +360,7 @@ CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
 	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '배송관련', null, '배송이 안됐는데 배송이 됐다고 뜹니다.', '주문번호는 45784578입니다. 뭐죠?', null, null, 'aaa');
 	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '주문관련', '반품', '반품요청드립니다.', '주문번호 12341234 반품요청', null, null, 'aaa');
 	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '배송관련', null, '배송이 안됐는데 배송이 됐다고 뜹니다.', '주문번호는 45784578입니다. 뭐죠?', null, null, 'aaa');
+	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '기타', null, '문의 드릴 게 있는데요..', '이러이러한 문의사항이 있어요.', null, null, 'aaa');
 
 
 	--product
