@@ -82,7 +82,7 @@
 			<tr>
 				<td>product 외 2개</td>
 				<td>옵션없음</td>
-				<td>2023-08-16 / <a href="#">imp_206045844427</a> </td>
+				<td>2023-08-16 / <a href="orderListEdit.jsp">imp_206045844427</a> </td>
 				<td><fmt:formatNumber value="100000" pattern="#,###"/>원</td>
 				<td class="text-warning fw-bold">
 				배송준비중<br> 송장번호 : <a href="https://service.epost.go.kr/trace.RetrieveDomRigiTraceList.comm?sid1=1111111111111" target="_blank" class="btn btn-info btn-sm text-white"> 배송조회</a>
