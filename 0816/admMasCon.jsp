@@ -80,6 +80,7 @@
 							<tr>
 
 								<c:forEach items="${amvolist }" var="amvo">
+								<input type="hidden" name="admId" value="${amvo.masvo.admId}" > 
 									<%
 									System.out.println("여기로 들어오나");
 									%>
@@ -91,7 +92,9 @@
 										<td>${amvo.avo.admRegi}</td>
 										<td>${amvo.masvo.masRegi}</td>
 										<td>${amvo.masvo.masPaper}${amvo.masvo.masSveri}</td>
-
+										
+										
+										
 										<td><input type="submit" class="btn btn-info"
 											formaction="/talkdog/Mypage/masConfirm.do" value="승인">
 											<input type="submit" class="btn btn-info"

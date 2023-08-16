@@ -96,16 +96,16 @@ public class Controller extends HttpServlet {
 			response.sendRedirect(url);
 			return;
 		}else if(cmd.equals("/Mypage/masConfirm.do")) {
-			System.out.println("승인 전");
+//			System.out.println("승인 전");
 			masConfirm(request);
 			response.sendRedirect(url);
-			System.out.println("승인 후");
+//			System.out.println("승인 후");
 			return;
 		}else if(cmd.equals("/Mypage/masReject.do")) {
-			System.out.println("거절 전");
+//			System.out.println("거절 전");
 			masReject(request);
 			response.sendRedirect(url);
-			System.out.println("거절 후");
+//			System.out.println("거절 후");
 			return;
 		}
 //		else if(cmd.equals("/Common/login.do")) {
@@ -253,6 +253,7 @@ public class Controller extends HttpServlet {
 	}
 	
 	public void masConfirm(HttpServletRequest request) {
+		
 		//승인
 		System.out.println("승인 중간 1");
 		
@@ -263,6 +264,7 @@ public class Controller extends HttpServlet {
 		boolean masCon = masdao.masConfirm(admId);
 		masvo.setMasConfirm(admId);
 		System.out.println("승인 중간 2");
+		
 		//승인 - 회원 종류 업데이트
 		boolean masUpType = masdao.masConType(admId);
 		avo.setAdmType(admId);

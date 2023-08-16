@@ -95,10 +95,10 @@ public class MasterDAO {
 			MasterVO masvo = new MasterVO();
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, masvo.getAdmId());
-System.out.println("");
-//			int result = pstmt.executeUpdate(); // 실행했을 때 1이 나와야 성공
-//			if (result == 1) // 정상적으로 업데이트 시 true 반환
-//				return true;
+//System.out.println("승인 테스트");
+			int result = pstmt.executeUpdate(); // 실행했을 때 1이 나와야 성공
+			if (result == 1) // 정상적으로 업데이트 시 true 반환
+				return true;
 
 		} catch (SQLException e) { // 예외 처리
 			e.printStackTrace();
@@ -157,14 +157,15 @@ System.out.println("");
 	//거절 - 전문가 목록 삭제
 	public boolean masDelete(String admId) { // 메모 삭제 시 메서드
 		query = "DELETE FROM master WHERE adm_id = ?";
+		System.out.println("delete 다오 테스트");
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, admId); 
-
+			
+			
 			int result = pstmt.executeUpdate(); // 실행했을 때 1이 나와야 성공
 			if (result == 1) // 정상적으로 삭제 성공 시 true 반환
 				return true;
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
