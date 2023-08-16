@@ -97,6 +97,10 @@ CREATE TABLE testresult (
 	t_name	varchar2(20)		NOT NULL
 );
 
+CREATE TABLE testname (
+	t_name	varchar2(20)		NOT NULL
+);
+
 CREATE TABLE delivery (
 	del_no		VARCHAR2(50)		NOT NULL,
 	del_name	VARCHAR2(50)		NOT NULL,
@@ -411,6 +415,11 @@ INSERT INTO category values(2, '정신건강');
 INSERT INTO category values(3, '취업/학업');
 INSERT INTO category values(4, '인간관계');
 INSERT INTO category values(5, '기타');
+
+-- testname insert
+INSERT INTO testname values('불안');
+INSERT INTO testname values('우울');
+INSERT INTO testname values('스트레스');
 
 -- community insert
 INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'정말 고민입니다..','고민고민',2,3,sysdate,'test',1);
