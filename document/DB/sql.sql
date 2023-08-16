@@ -378,13 +378,11 @@ CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
 
 
 	--product
-    	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1717','djks',234,'dasfsafas',15,'medi',to_date('23/08/08','RR/MM/DD'),'p1717.jpg','i1717.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1414','juyo',45,'ggggg',12,'book',to_date('23/08/08','RR/MM/DD'),'p1414.jpg','i1414.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1515','hihihi',673,'product test test hahahahah',200000,'book',to_date('23/08/08','RR/MM/DD'),'p1515.jpg','i1515.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1818','sf',645,'sdfasfsa',16,'medi',to_date('23/08/08','RR/MM/DD'),'p1818.jpg','i1818.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1919','efd',234,'sfasfas',17,'book',to_date('23/08/08','RR/MM/DD'),'p1919.jpg','i1919.jpg',null);
-	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p2929','dsf',12,'sfasfasd',187,'aroma',to_date('23/08/08','RR/MM/DD'),'p2929.jpg','i2929.jpg',null);
-	
+   Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p111','칼슘마그네슘',234,'뼈 치아건강 신경근육 도움',15000,'medi',to_date('23/08/08','RR/MM/DD'),'p111.jpg','i111.jpg',null);
+	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p112','비오틴',45,'영양',12000,'medi',to_date('23/08/08','RR/MM/DD'),'p112.jpg','i112.jpg',null);
+	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p123','자존감대화법',673,'자존감 대화 하는 방법',200000,'book',to_date('23/08/08','RR/MM/DD'),'p123.jpg','i123.jpg',null);
+	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p116','라벤더아로마',645,'심신안정 라벤더',25000,'aroma',to_date('23/08/08','RR/MM/DD'),'p116.jpg','i116.jpg',null);
+	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p115','신경정신의학',234,'신경전달물질과 뇌 과학!',17000,'book',to_date('23/08/08','RR/MM/DD'),'p115.jpg','i115.jpg',null);
 
 	-- order_
 	-- (fk) adm_id 자리엔 admin 테이블 adm_id 중 하나 기입
