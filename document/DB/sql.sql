@@ -420,14 +420,14 @@ INSERT INTO testname values('우울');
 INSERT INTO testname values('스트레스');
 
 -- community insert
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'정말 고민입니다..','고민고민',2,3,sysdate,'test',1);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'너무 힘드네요','힘들엉',2,3,sysdate,'test',2);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'어려워요ㅠ','어려워',2,3,sysdate,'test',3);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'사람 만나기 무서워요','무서웡',2,3,sysdate,'test',4);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'여자친구가 좋아할 선물','고민고민',2,3,sysdate,'aaa',1);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'살기 싫어요','우울해',2,3,sysdate,'aaa',2);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'취업하고싶은데..','어려워',2,3,sysdate,'aaa',3);
-INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'저희 직장에 대머리 부장님이 계신데','성격이 이상해!',2,3,sysdate,'aaa',4);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'정말 고민입니다..','고민고민',0,0,sysdate,'test',1);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'너무 힘드네요','힘들엉',0,0,sysdate,'test',2);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'어려워요ㅠ','어려워',0,0,sysdate,'test',3);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'사람 만나기 무서워요','무서웡',0,0,sysdate,'test',4);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'여자친구가 좋아할 선물','고민고민',0,0,sysdate,'aaa',1);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'살기 싫어요','우울해',0,0,sysdate,'aaa',2);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'취업하고싶은데..','어려워',0,0,sysdate,'aaa',3);
+INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'저희 직장에 대머리 부장님이 계신데','성격이 이상해!',0,0,sysdate,'aaa',4);
 
 -- notice insert
 INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '공지사항', '공지사항입니다', '8월 16일 오전 9시부터 서버 점검이 있을 예정입니다. 홈페이지 이용에 참고 바랍니다.', 0, null, SYSDATE);
