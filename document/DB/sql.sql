@@ -52,7 +52,7 @@ create table master (
 	mas_auth varchar2(100),
 	mas_prof varchar2(100),
 	mas_regi date not null,
-	mas_confirm char(1),
+	mas_confirm varchar2(10),
     mas_school varchar2(900)
 );
 alter table master add mas_cert varchar2(900);
