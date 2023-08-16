@@ -347,13 +347,20 @@ CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
 --6. 각 테이블에 insert 하기
 	--admin
 	INSERT INTO admin VALUES ('aaa', 'aaa', 'aaa', '1111','01010','aaa1', 'aaa2', 'aaa3', '010-1222-2222', 'aaa@gmail.com', null, null, '0', '20200212');
-
-	-- cart
-	INSERT INTO cart VALUES (CART_SEQ.NEXTVAL, 'p1515', 'aaa', 1, '--옵션없음--');
 	
-	--qna
+	--qna (페이징 확인할 수 있게 6번 run)
 	INSERT INTO qna VALUES (QNA_SEQ.NEXTVAL, SYSDATE, '답변대기', '주문관련', '주문취소','주문한 거 취소하고 싶어요.', '주문번호 어쩌구저쩌구 샬라샬라 샀는데 이거 취소처리 해주세요.', NULL, NULL, 'aaa');
 	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '커뮤니티', null, '커뮤니티 관련 문의', '드립니다', null, null, 'aaa');
+	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '커뮤니티', null, '커뮤니티 관련 문의', '드립니다', null, null, 'aaa');
+	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '주문관련', '반품', '반품요청드립니다.', '주문번호 12341234 반품요청', null, null, 'aaa');
+	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '배송관련', null, '배송이 안됐는데 배송이 됐다고 뜹니다.', '주문번호는 45784578입니다. 뭐죠?', null, null, 'aaa');
+	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '커뮤니티', null, '커뮤니티 관련 문의', '드립니다', null, null, 'aaa');
+	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '주문관련', '반품', '반품요청드립니다.', '주문번호 12341234 반품요청', null, null, 'aaa');
+	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '배송관련', null, '배송이 안됐는데 배송이 됐다고 뜹니다.', '주문번호는 45784578입니다. 뭐죠?', null, null, 'aaa');
+	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '주문관련', '반품', '반품요청드립니다.', '주문번호 12341234 반품요청', null, null, 'aaa');
+	INSERT INTO qna VALUES (qna_seq.NEXTVAL, SYSDATE, '답변대기', '배송관련', null, '배송이 안됐는데 배송이 됐다고 뜹니다.', '주문번호는 45784578입니다. 뭐죠?', null, null, 'aaa');
+
+
 	--product
     	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1717','djks',234,'dasfsafas',15,'medi',to_date('23/08/08','RR/MM/DD'),'p1717.jpg','i1717.jpg',null);
 	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p1414','juyo',45,'ggggg',12,'book',to_date('23/08/08','RR/MM/DD'),'p1414.jpg','i1414.jpg',null);
