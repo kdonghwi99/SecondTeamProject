@@ -31,6 +31,29 @@
 
   <style>
   /* Custom Image Class */
+  .register-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 10px;
+  float: right;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+.register-btn:hover {
+  background-color: #0056b3;
+  text-decoration: none;
+  color: white;
+}
+  
   
     .table-center {
       margin-left: auto;
@@ -77,13 +100,6 @@
  <!-- header start -->
 <%@ include file="../include/header.jsp" %>
  <!-- header end -->
-<!-- msg에 내용이 있을 경우 alert으로 출력 -->
-<c:if test="${!empty msg }">
-	<script>
-			alert('${msg}');
-	</script>
-	<%session.removeAttribute("msg"); 	//alert 띄우고 msg속성 초기화(제거)%>
-</c:if>
 
   <main id="main">
 
@@ -127,10 +143,11 @@
 </div>
 	</div>
       </div>
+
         <div class="col-lg-4">
         <div class="portfolio-info">
             <h3>상품 정보</h3>
-         <form method="post" action="/talkdog/Cart/CartAdd.do">
+         
         <ul>
         <% if(pvo != null) { %>
           <li><strong>상품 이름</strong>: <%=pvo.getpName()%></li>
@@ -142,18 +159,18 @@
                 <strong>상세 설명을 불러올 수 없습니다.</strong>
             <% } %></li>
           <strong>수량 </strong>  
-          <select name="cartQuan" class="form-select">
+          <select name="option" class="form-select" name="cartOpt">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
-			</select>
+		</select>
 		<% if (pvo != null && pvo.getpType() != null && !pvo.getpType().equals("null")) { %>
             <li>
                 <strong>옵션 </strong>
                 <div class="options">
-                    <select name="cartOpt" class="form-select">
+                    <select name="option" class="form-select">
                         <% if (pvo.getpType().equals("size")) { %>
                             <option value="S">Size: S</option>
                             <option value="M">Size: M</option>
@@ -162,7 +179,6 @@
                     </select>
                 </div>
             </li>
-            <input type="hidden" value=""/>
         <% } %> <!-- 이 부분 수정 -->
                 
                
@@ -172,10 +188,10 @@
         <% if (pvo != null) { %>
             <h3><%=pvo.getpPrice() %>원</h3>
             <div class="buttons">
-               
+                <form method="post" action="../cart/cartAddProc.jsp">
                     <input type="hidden" name="pid" value="<%=pvo.getpId() %>">
-                    <input type="submit" id="cartin" class="btn btn-info cartAddBtn" value="장바구니 담기&raquo"/>
-                    <a href="/talkdog/Cart/CartList.do" class="btn btn-warning">장바구니 보기 &raquo;</a>
+                    <a id="cartin" href="#" class="btn btn-info cartAddBtn">장바구니 담기 &raquo;</a>
+                    <a href="/talkdog/cart/cart.jsp" class="btn btn-warning">장바구니 보기 &raquo;</a>
                     <a href="/talkdog/product/productlist.jsp" class="btn btn-secondary">상품 목록 &raquo;</a>
                 </form>
             </div>
@@ -186,7 +202,57 @@
   </div>
 </section><!-- End Product Details Section -->
 <!-- ======= Reviews Section ======= -->
+<% 
+    String loggedInUserId = (String) session.getAttribute("sid"); // 현재 사용자의 아이디
+    if (loggedInUserId != null) { // 사용자가 로그인한 경우만 리뷰 등록 버튼을 보여줍니다.
+%>
+        <!-- 리뷰 작성 버튼 -->
+<button id="reviewBtn" class="register-btn">리뷰 작성하기</button>
 
+        <!-- 리뷰 작성 팝업 -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>리뷰 작성</h2>
+                <!-- 리뷰 작성 폼 -->
+                <form id="reviewForm" method="POST" action="ReviewAddProc.jsp">
+                    <label for="review">리뷰:</label>
+                    <textarea id="review" name="review" rows="4" cols="50" required></textarea>
+                    <input type="hidden" id="pId" name="pId" value="<%=pvo.getpId()%>" /> <!-- 상품번호를 입력하세요. -->
+                    <input type="hidden" id="admId" name="admId" value="<%= loggedInUserId %>" /> <!-- 회원아이디 자동 적용 -->
+                    <input type="submit" value="리뷰 등록">
+                </form>
+            </div>
+        </div>
+
+        <!-- 팝업을 여닫는 자바스크립트 -->
+        <script>
+        window.onload = function() {
+            var reviewBtn = document.getElementById("reviewBtn");
+            if (reviewBtn) {
+              reviewBtn.onclick = function() {
+                var modal = document.getElementById("myModal");
+                var span = document.getElementsByClassName("close")[0];
+
+                modal.style.display = "block";
+
+                span.onclick = function() {
+                  modal.style.display = "none";
+                }
+
+                window.onclick = function(event) {
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+                }
+              }
+            }
+        }
+        </script>
+
+<% 
+    }
+%>
       <jsp:useBean id="rdao" class="talkdog.dao.ReviewDAO"/> <!-- 디폴트 생성자로 호출 -->
   	<% 
 List<ReviewVO> rvoList = rdao.reviewSelect(pid); //pid에 맞는 rvo를 DB에서 가져옴
@@ -222,7 +288,7 @@ System.out.println("pid = " + pid);
         <% String currentUserId = (String) session.getAttribute("sid"); %>
        <% if (currentUserId != null && (currentUserId.equals(rvo.getAdmId()) || currentUserId.equalsIgnoreCase("admin"))) { %>
           <a href="reviewUpdate.jsp?pId=<%=rvo.getpId()%>&rNo=<%=rvo.getrNo()%>">수정</a>
-		  <a href="./ReviewDelete.do">삭제</a>
+		  <a href="/talkdog/ReviewDelete.do?pId=<%=rvo.getpId()%>&rNo=<%=rvo.getrNo()%>">삭제</a>
     <% } %>
       </td>
     </tr>
