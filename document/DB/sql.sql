@@ -431,13 +431,13 @@ INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'저희 직장에 대머리 부�
 
 -- notice insert
 INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '공지사항', '공지사항입니다', '8월 16일 오전 9시부터 서버 점검이 있을 예정입니다. 홈페이지 이용에 참고 바랍니다.', 0, null, SYSDATE);
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230707이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-07-07');
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230716이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-07-16');
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230730이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-07-30');
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230801이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-08-01');
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230811이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-08-11');
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230816이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-08-16');
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230707이벤트!', '이벤트 시작합니다!', 0, 'image', '2023-07-07');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230707이벤트!', '이벤트 시작합니다!', 0, '../resources/images/null', '2023-07-07');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230716이벤트!', '이벤트 시작합니다!', 0, '../resources/images/null', '2023-07-16');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230730이벤트!', '이벤트 시작합니다!', 0, '../resources/images/null', '2023-07-30');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230801이벤트!', '이벤트 시작합니다!', 0, '../resources/images/null', '2023-08-01');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230811이벤트!', '이벤트 시작합니다!', 0, '../resources/images/null', '2023-08-11');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230816이벤트!', '이벤트 시작합니다!', 0, '../resources/images/null', '2023-08-16');
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230707이벤트!', '이벤트 시작합니다!', 0, '../resources/images/null', '2023-07-07');
 
 -- commReply insert
 INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글', SYSDATE, 7, 'test');
