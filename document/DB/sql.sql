@@ -310,9 +310,14 @@ alter table admin MODIFY adm_type CHARACTER default '0';
 	-- test t_num 시퀀스
 	CREATE SEQUENCE test_seq START WITH 1 INCREMENT BY 1 NOMAXVALUE;
 
-CREATE SEQUENCE COMMUNITY_SEQ INCREMENT BY 1 START WITH 1;
-CREATE SEQUENCE NOTICE_SEQ INCREMENT BY 1 START WITH 1;
-CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
+	-- community 시퀀스
+	CREATE SEQUENCE COMMUNITY_SEQ INCREMENT BY 1 START WITH 1;
+
+	-- notice 시퀀스
+	CREATE SEQUENCE NOTICE_SEQ INCREMENT BY 1 START WITH 1;
+
+	-- reply 시퀀스
+	CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
 
 	--주문 번호 생성 트리거
 	create or replace TRIGGER TRG_GENERATE_ORD_NO
@@ -378,7 +383,7 @@ CREATE SEQUENCE COMMREPLY_SEQ INCREMENT BY 1 START WITH 1;
 
 
 	--product
-   Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p111','칼슘마그네슘',234,'뼈 치아건강 신경근육 도움',15000,'medi',to_date('23/08/08','RR/MM/DD'),'p111.jpg','i111.jpg',null);
+  	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p111','칼슘마그네슘',234,'뼈 치아건강 신경근육 도움',15000,'medi',to_date('23/08/08','RR/MM/DD'),'p111.jpg','i111.jpg',null);
 	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p112','비오틴',45,'영양',12000,'medi',to_date('23/08/08','RR/MM/DD'),'p112.jpg','i112.jpg',null);
 	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p123','자존감대화법',673,'자존감 대화 하는 방법',200000,'book',to_date('23/08/08','RR/MM/DD'),'p123.jpg','i123.jpg',null);
 	Insert into PRODUCT (P_ID,P_NAME,P_VOL,P_DETAIL,P_PRICE,P_CATE,P_DATE,P_MIMG,P_IMG,P_TYPE) values ('p116','라벤더아로마',645,'심신안정 라벤더',25000,'aroma',to_date('23/08/08','RR/MM/DD'),'p116.jpg','i116.jpg',null);
@@ -430,7 +435,7 @@ INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'취업하고싶은데..','어려
 INSERT INTO comm VALUES (COMMUNITY_SEQ.NEXTVAL,'저희 직장에 대머리 부장님이 계신데','성격이 이상해!',0,0,sysdate,'aaa',4);
 
 -- notice insert
-INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '공지사항', '공지사항입니다', '8월 16일 오전 9시부터 서버 점검이 있을 예정입니다. 홈페이지 이용에 참고 바랍니다.', 0, null, SYSDATE);
+INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '공지사항', '공지사항입니다', '8월 16일 오전 9시부터 서버 점검이 있을 예정입니다. 홈페이지 이용에 참고 바랍니다.', 0, '../resources/images/null', SYSDATE);
 INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230707이벤트!', '이벤트 시작합니다!', 0, '../resources/images/null', '2023-07-07');
 INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230716이벤트!', '이벤트 시작합니다!', 0, '../resources/images/null', '2023-07-16');
 INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230730이벤트!', '이벤트 시작합니다!', 0, '../resources/images/null', '2023-07-30');
@@ -442,9 +447,9 @@ INSERT INTO notice values(NOTICE_SEQ.NEXTVAL, '이벤트', '230707이벤트!', '
 -- commReply insert
 INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글', SYSDATE, 7, 'test');
 INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓ㅐㅐ대대대ㅐ대ㅐ댓글', SYSDATE, 7, 'test');
-INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글3333333333333', SYSDATE, 7, 'test');
+INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글3', SYSDATE, 7, 'test');
 INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글4', SYSDATE, 8, 'test');
-INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글4', SYSDATE, 8, 'admin');
+INSERT INTO commReply VALUES(COMMREPLY_SEQ.NEXTVAL, '댓글5', SYSDATE, 8, 'admin');
 
 ---- 테이블 삭제 구문
 DROP TABLE category;
