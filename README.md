@@ -1,4 +1,4 @@
-# SecondTeamProject
+# 들어보시개🐶
 고민 상담 커뮤니티 <br>
 쌍용강북교육센터 semi project <br>
 김동휘, 김소영, 김주영, 정하영, 조민경 <br>
